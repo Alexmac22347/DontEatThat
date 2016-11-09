@@ -84,3 +84,6 @@ Kenton - added javascript to validate registration form (1); implemented logic t
 
 Nov 8:
 Kenton - added server-side form validation for sign up page (3); fixed validation patterns for javascript validation (0.5); fixed invalid username bug (issue #41) (1); fixed insecure redirect issue #42 (0.5)
+
+Nov 9:
+Alex - Moved library to public_html and updated upload script (.5)
