@@ -55,6 +55,7 @@
                                 if (isset($_SESSION["user_name"])) {
                                    echo 
                                    "
+                                   <span class='navbar-text'>" . $_SESSION["user_name"] . "</span>
                                    <li><a href='manage_account.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
                                    <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
                                    ";
