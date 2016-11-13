@@ -9,75 +9,50 @@ class FoodFinder
 
 {
     var $numberOfSearchTerms = 5;
-    var $foodData1;
-    var $foodData2;
-    var $consumerKey;
-    var $secretKey;
     var $client;
+
     function __construct()
     {
         $config = include ('../config/config.php');
 
-        $this->consumerKey = $config['consumer_key'];
-        $this->secretKey = $config['secret_key'];
-        $this->client = new AdcuzFatSecretClient($this->consumerKey, $this->secretKey);
+        $consumerKey = $config['consumer_key'];
+        $secretKey = $config['secret_key'];
+        $this->client = new Adcuz\FatSecret\Client($consumerKey, $secretKey);
     }
 
-    function runQuery($searchTerm1, $searchTerm2)
+    function runQuery($searchTerm)
     {
+        // This initial search does not give us enough data. It only contains a
+        // few basic facts like ID, sugar, some other stuff I forgot
+        $searchResult = $this->client->SearchFood($searchTerm, false, false, $this->numberOfSearchTerms);
 
-        // Get the first item
-
-        $searchResult = $this->client->SearchFood($searchTerm1, false, false, $this->numberOfSearchTerms);
-        $foodIDs = [];
+        // Keep track of all the IDs found by the search
         for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
             $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
         }
 
+        // Get the first food which has an actual serving size
+        // Some items have a strange serving units
         for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-            $rawFoodData1 = $this->client->GetFood($foodIDs[$i]);
-            $this->foodData1 = $this->getRelevantData($rawFoodData1);
-            if ($this->foodData1['metric_serving_unit'] == 'g' || $this->foodData1['metric_serving_unit'] == 'oz') {
+            $rawFoodData = $this->client->GetFood($foodIDs[$i]);
+            $foodData = $this->getRelevantData($rawFoodData);
+            if ($foodData['metric_serving_unit'] == 'g' || $this->foodData1['metric_serving_unit'] == 'oz') {
                 break;
             }
         }
 
-        if ($this->foodData1['metric_serving_unit'] != 'g' && $this->foodData1['metric_serving_unit'] != 'oz') {
-            $this->foodData1 = null;
+        // If we went able to find something with a valid serving unit, 
+        // we set the foodData to null so that whoever uses this knows
+        if ($foodData['metric_serving_unit'] != 'g' && $this->foodData1['metric_serving_unit'] != 'oz') {
+            $foodData = null;
         }
 
-        // Get the second item
-
-        $searchResult = $this->client->SearchFood($searchTerm2, false, false, $this->numberOfSearchTerms);
-        $foodIDs = [];
-        for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-            $foodIDs[$i] = $searchResult['foods']['food'][$i]['food_id'];
-        }
-
-        for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
-            $rawFoodData2 = $this->client->GetFood($foodIDs[$i]);
-            $this->foodData2 = $this->getRelevantData($rawFoodData2);
-            if ($this->foodData2['metric_serving_unit'] == 'g' || $this->foodData2['metric_serving_unit'] == 'oz') {
-                break;
-            }
-        }
-
-        if ($this->foodData2['metric_serving_unit'] != 'g' && $this->foodData2['metric_serving_unit'] != 'oz') {
-            $this->foodData2 = null;
-        }
+        return $foodData;
     }
 
     function setNumberOfSearchTerms($num)
     {
         $this->numberOfSearchTerms = $num;
-    }
-
-    function getFoodDatas()
-    {
-        return array(
-            $this->foodData1,
-            $this->foodData2
-        );
     }
 
     private
