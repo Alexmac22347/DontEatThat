@@ -31,7 +31,14 @@ $signupprotein  = $_POST['signup-protein'];
 
 $current = $_SESSION['user_username'];
 
-$sql = " UPDATE Users SET Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
+// If the user doesn't enter a new password,
+// don't update the database with a blank password!
+if($signuppassword != '') {
+    $sql = " UPDATE Users SET Password = '$signuppassword', Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
+} else {
+    echo "hi";
+    $sql = " UPDATE Users SET Calories = '$signupcalories', Sugar = '$signupsugar', Sodium = '$signupsodium', Protein = '$signupprotein' WHERE Username = '$current' ";
+}
 
 if (mysqli_query($conn, $sql)) {
     header('Location: http://donteatthat.ca');
