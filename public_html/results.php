@@ -4,7 +4,7 @@ $config = include('../config/config.php');
 
 session_start();
 
-$foodFinder    = new FoodFinder($config['consumer_key'], $config['secret_key']);
+$foodFinder    = new vendor\project\FoodFinder($config['consumer_key'], $config['secret_key']);
 $resultData[0] = $foodFinder->runQuery($_GET['item1']);
 $resultData[1] = $foodFinder->runQuery($_GET['item2']);
 

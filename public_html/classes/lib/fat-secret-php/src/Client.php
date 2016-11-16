@@ -1,6 +1,6 @@
 <?php
 
-namespace Adcuz\FatSecret;
+namespace vendor\project;
 
 class Client {
 

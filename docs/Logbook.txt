@@ -125,6 +125,7 @@ Kenton - added password encryption (1)
 Nov 15
 Alex - refactor (86a8f527066a85782b172744dd75c8a599c0c0c8) (3)
 Kenton - Requirements: Use Case #2 (1)
+Alex - Added tests with Atoum and locally installed Composer (2) (683cec1b9bf964e232c2181a1f7cc7088a551e8b to 2b6bdf1313ad5e52fb4be74a713c4eb121f375f2)
 
 Nov 16
 Benny - added attribution (15 minutes)
@@ -138,3 +139,4 @@ Kenton - Resolved Issue #76: All errors now have same styling (0.5)
 
 Nov 19
 Kenton, Benny, Charn - Resolved Issue #52: Implemented autocomplete functionality (3)
+Alex, Adil - Fixed horrible namespace issues with Atoum/tests (3) (

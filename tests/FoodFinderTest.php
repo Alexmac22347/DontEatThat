@@ -1,31 +1,38 @@
 <?php
-use PHPUnit\Framework\TestCase;
 
-class FoodFinderTest extends TestCase
+namespace vendor\project\tests\units;
+
+require_once 'vendor/bin/atoum';
+
+include_once 'public_html/classes/FoodFinder.php';
+
+use \mageekguy\atoum;
+use \vendor\project;
+
+class FoodFinder extends atoum\test
 {
-	public function testGetFoodDatas(){
-		// Arrange
-        $arr = new FoodFinder();
-			
-        // Act
-        $act = $arr->getFoodDatas();
+    public function testSimpleQuery()
+    {
+        $config = include('config/config.php');
+        $foodFinder = new project\FoodFinder($config['consumer_key'], $config['secret_key']);
+        $dataArray = $foodFinder->runQuery('apple');
+        $foodName = $dataArray['food_name'];
+        $this->string($foodName)->isEqualTo("Apples");
+    }
 
-        // Assert
-        $this->assertEquals(2, count($act));
-	}
-	
-	public function testSetNumberOfSearchTerms(){
-		// Arrange
-		$x = new FoodFinder();
-		
-		$number = 4;
-		
-		// Act
-		$a = $x->setNumberOfSearchTerms($number);
-		
-		// Assert
-		$this -> assertEquals($number, $a);
-	}
-	
-	
+    public function testNullQuery()
+    {
+        // Fill in code
+    }
+
+    public function testMultipleSameQuery()
+    {
+        // Fill in code
+    }
+
+    public function testMultipleDifferentQuery()
+    {
+        // Fill in code
+    }
 }
+?>

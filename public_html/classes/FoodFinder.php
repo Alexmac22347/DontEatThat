@@ -1,4 +1,7 @@
 <?php
+
+namespace vendor\project;
+
 require_once ('lib/fat-secret-php/src/Client.php');
 
 require_once ('lib/fat-secret-php/src/OAuthBase.php');
@@ -13,7 +16,7 @@ class FoodFinder
 
     function __construct($consumerKey, $secretKey)
     {
-        $this->client = new Adcuz\FatSecret\Client($consumerKey, $secretKey);
+        $this->client = new Client($consumerKey, $secretKey);
     }
 
     function runQuery($searchTerm)

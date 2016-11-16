@@ -2,5 +2,9 @@ language: php
 php:
     - '5.4'
 
+before_script:
+    composer require atoum/atoum
+
 script:
-    find . -name "*.php" -print0 | xargs -0 -n1 -P8 php -l
+    find . -name "*.php" -print0 | xargs -0 -n1 -P8 php -l;
+    php tests/*

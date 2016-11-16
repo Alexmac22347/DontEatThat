@@ -37,11 +37,15 @@ available in PHP 5.5 and above.
 
 
 ## Running Tests
-(WIP)
-Tests are run using phpunit. To run all tests, first install phpunit. Make sure you are in 
-the main directory. Then, use the following command:
+Tests are run using Atoum. Make sure you have composer installed (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+In the home directory, run:
 ```
-phpunit tests/*
+composer install
+```
+Atoum should now be installed. To run the tests, use the following command:  
+
+```
+php tests/*
 ```
 
 ## Authors

@@ -1,5 +1,5 @@
 <?php
-namespace Adcuz\FatSecret;
+namespace vendor\project;
 
 /* OAuth */
 class OAuthBase {
