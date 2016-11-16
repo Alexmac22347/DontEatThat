@@ -1,6 +1,6 @@
 <?php
     $title = "Sign Up";
-    include("header.php");
+    include("layout/header.php");
     
     // Server-Side Error Handling on Submit
     $url                  = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; // used in determining if we need to display errors
@@ -33,7 +33,7 @@
     }
     ?>
 <div class="container-fluid">
-    <form id="signupForm" class="form-horizontal" action="makeAccount.php" method="post">
+    <form id="signupForm" class="form-horizontal" action="php/makeAccount.php" method="post">
         <h2 style="padding-left: 0;">Registration Form</h2>
         <!-- NAME -->
         <div class="form-group">
@@ -136,4 +136,4 @@
     </form>
 </div>
 <!--End of Form-->
-<?php include "footer.php"; ?>
+<?php include "layout/footer.php"; ?>

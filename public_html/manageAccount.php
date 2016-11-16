@@ -1,6 +1,6 @@
 <?php 
     $title = "Manage Account";
-    include("header.php");
+    include("layout/header.php");
     
     // Determine user's current settings and selects
     // CALORIES
@@ -89,7 +89,7 @@
     ?>
 <div>
     <div class="container-fluid">
-        <form class="form-horizontal" action="accountUpdate.php" method="post">
+        <form class="form-horizontal" action="php/accountUpdate.php" method="post">
             <h2 style="padding-left: 0;">Manage Account</h2>
             <div style="padding-top: 40px; padding-left: 15px; padding-right: 15px" class="form-group">
                 <!-- FIRST NAME -->
@@ -191,11 +191,11 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <!-- <a class="btn btn-danger" data-dismiss="modal" href="deleteAccount.php" role="button">Yes</a>-->
-                <a href="deleteAccount.php" class="btn btn-danger">Yes</a>
+                <!-- <a class="btn btn-danger" data-dismiss="modal" href="php/deleteAccount.php" role="button">Yes</a>-->
+                <a href="php/deleteAccount.php" class="btn btn-danger">Yes</a>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>
 </div>
-<?php include "footer.php" ?>
+<?php include "layout/footer.php" ?>

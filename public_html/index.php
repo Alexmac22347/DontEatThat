@@ -1,6 +1,6 @@
 <?php 
     $title = "Home";
-    include("header.php"); 
+    include("layout/header.php"); 
     ?>
 <!-- Beginning of logo, input fields and buttons -->
 <div align="center" style="padding-top: 5%;">
@@ -30,4 +30,4 @@
     </div>
 </div>
 <!-- End of logo, input fields and buttons -->
-<?php include "footer.php" ?>
+<?php include "layout/footer.php" ?>

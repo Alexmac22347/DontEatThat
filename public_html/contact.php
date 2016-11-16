@@ -1,6 +1,6 @@
 <?php 
     $title = "Contact";
-    include("header.php"); 
+    include("layout/header.php"); 
     ?>
 <div class="container">
     <div class="row">
@@ -9,7 +9,7 @@
             <p style="padding-left: 0; padding-top: 0;">
                 We are here to answer any questions you may have about our services. Please use the form below and we'll respond as soon as we can.
             </p>
-            <form id="contact-form" method="post" action="sendEmail.php" role="form">
+            <form id="contact-form" method="post" action="php/sendEmail.php" role="form">
                 <div class="controls">
                     <div class="row">
                         <div class="col-md-6">
@@ -58,4 +58,4 @@
         </div>
     </div>
 </div>
-<?php include "footer.php" ?>
+<?php include "layout/footer.php" ?>

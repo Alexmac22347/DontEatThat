@@ -9,9 +9,9 @@
         <!-- Ensure proper rendering on mobile -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap -->
-        <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Link to an external style sheet -->
-        <link rel="stylesheet" type="text/css" href="mainstyle.css">
+        <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- jQuery Validation Plugin -->
@@ -19,9 +19,9 @@
         <!-- jQuery Validation Plugin: Additional Methods -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.min.js"></script>
         <!-- Latest compiled JavaScript -->
-        <script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
         <!-- Custom jquery functions -->
-        <script src="jquery/jQueryFunctions.js"></script>
+        <script src="js/jQueryFunctions.js"></script>
         <!-- Script to send email -->
         <script src="js/contact.js"></script>
         <!-- Script to retrieve food data from API -->
@@ -60,8 +60,8 @@
                                         <span class='glyphicon glyphicon-user'></span> " . $_SESSION['user_name'] . " <span class='caret'></span>
                                         </a>
                                         <ul class='dropdown-menu'>
-                                            <li><a href='manageAccount.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
-                                            <li><a href='logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
+                                            <li><a href='../manageAccount.php'><span class='glyphicon glyphicon-cog'></span> Manage Account</a></li>
+                                            <li><a href='../php/logout.php'><span class='glyphicon glyphicon-log-out'></span> Logout</a></li>
                                         </ul>
                                     </li>
                                     ";

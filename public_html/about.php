@@ -1,6 +1,6 @@
 <?php 
     $title = "About";
-    include("header.php"); 
+    include("layout/header.php"); 
 ?>
 <!-- Beginning of About content -->
 <div align="center" style="padding-top: 2%;">
@@ -20,4 +20,4 @@
    </div>
 </div>
 <!-- End of About content -->
-<?php include "footer.php" ?>
+<?php include "layout/footer.php" ?>

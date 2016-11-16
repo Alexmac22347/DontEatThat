@@ -1,6 +1,6 @@
 <?php
 session_start();
-$configs = include('../config/config.php');
+$configs = include('../../config/config.php');
 
 $username = $configs['database_username'];
 $password = $configs['database_password'];

@@ -31,8 +31,10 @@ try {
         'type' => 'success',
         'message' => $okMessage
     );
-    
-    header("Location: emailReceived.php");
+
+    session_start();
+    $_SESSION['countdown_message'] = "Thank you for your email.<br>";
+    header("Location: ../countdown.php");
     
 }
 catch (\Exception $e) {

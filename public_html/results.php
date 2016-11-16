@@ -1,5 +1,5 @@
 <?php
-require_once('FoodFinder.php');
+require_once('php/FoodFinder.php');
 $config = include('../config/config.php');
 
 session_start();
@@ -8,15 +8,25 @@ $foodFinder    = new FoodFinder($config['consumer_key'], $config['secret_key']);
 $resultData[0] = $foodFinder->runQuery($_GET['item1']);
 $resultData[1] = $foodFinder->runQuery($_GET['item2']);
 
-$_SESSION['food0_id'] = $resultData[0]['food_id'];
-$_SESSION['food1_id'] = $resultData[1]['food_id'];
 
-if ($resultData[0]['food_id'] == 0 || $resultData[1]['food_id'] == 0) {
-    header('Location: foodNotFound.php');
+// If both or one of the foods was not found
+if (!isset($resultData[0]['food_id']) && !isset($resultData[1]['food_id'])) {
+    $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item1'] . " or " . $_GET['item2'] . ".<br>";
+    header('Location: countdown.php');
+}
+else if (!isset($resultData[0]['food_id'])) {
+    $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item1']. ".<br>";
+    header('Location: countdown.php');
+}
+else if (!isset($resultData[1]['food_id'])) {
+    $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item2'] . ".<br>";
+    header('Location: countdown.php');
 }
 
-if ($resultData[0]['food_id'] == $resultData[1]['food_id']) {
-    header('Location: foodSameResult.php');
+// If both foods mapped to the same result
+else if ($resultData[0]['food_id'] == $resultData[1]['food_id']) {
+    $_SESSION['countdown_message'] = "Sorry, the items you entered were the same. Please enter two different food items.<br>";
+    header('Location: countdown.php');
 }
 
 ?>

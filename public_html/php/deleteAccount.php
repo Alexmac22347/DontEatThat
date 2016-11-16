@@ -1,7 +1,7 @@
 <?php
 // THIS SCRIPT IS CALLED WHEN A USER CONFIRMS ACCOUNT DELETION IN manageAccount.php
 session_start();
-$configs = include('../config/config.php');
+$configs = include('../../config/config.php');
 
 // setup variables to connect to database
 $username = $configs['database_username'];
@@ -23,7 +23,7 @@ $sql = " DELETE FROM Users WHERE Username = '$user' ";
 
 if ($conn->query($sql) === TRUE) {
     session_destroy();
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

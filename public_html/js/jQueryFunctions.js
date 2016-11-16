@@ -90,7 +90,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type : 'POST',
-			url : 'checkLogin.php',
+			url : '../php/checkLogin.php',
 			data : data,
 			success : function(response) {
 				if (response == "success") {
@@ -118,7 +118,7 @@ $(document).ready(function() {
 			"signup-username": {
 				required: true,
 				pattern: /^[a-zA-Z0-9]{3,16}$/,
-				remote: 'checkUsername.php' // using AJAX to quickly check for pre-existing username
+				remote: '../php/checkUsername.php' // using AJAX to quickly check for pre-existing username
 			},
 			"signup-password": {
 				required: true,

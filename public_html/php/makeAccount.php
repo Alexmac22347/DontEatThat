@@ -7,7 +7,7 @@ function test_input($data)
     $data = htmlspecialchars($data); // prevents SQL injection
     return $data;
 }
-$configs = include('../config/config.php');
+$configs = include('../../config/config.php');
 
 // Reference: https://www.tutorialspoint.com/php/php_mysql_login.htm
 $username = $configs['database_username'];
@@ -115,7 +115,7 @@ if ($conn->query($sql) === TRUE) {
     $_SESSION['user_protein']  = $signupprotein;
     $_SESSION['user_calcium']  = $signupcalcium;
     session_write_close();
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
