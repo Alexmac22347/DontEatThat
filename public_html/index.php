@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <img class="img-responsive title-style" src="res/logo.jpg">          
         <h2 style="font-size: 3vw;">Please Enter Food Items</h2>
-        <form class="form-inline" action="results.php">
+        <form id="foodItemsForm" class="form-inline" action="results.php">
             <div>
                 <div class="form-group food1">
                     <input class="form-control" type="text" id="item1" name="item1"

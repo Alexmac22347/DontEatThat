@@ -135,3 +135,6 @@ Kenton - Requirements: Use Case #3 + justifications for Product Backlog changes 
 
 Nov 18
 Kenton - Resolved Issue #76: All errors now have same styling (0.5)
+
+Nov 19
+Kenton, Benny, Charn - Resolved Issue #52: Implemented autocomplete functionality (3)

@@ -90,6 +90,7 @@ $(document).ready(function() {
 			type : 'POST',
 			url : '../php/checkLogin.php',
 			data : data,
+			dataType : json,
 			success : function(response) {
 				if (response == "success") {
 					$("#login_button").html('<img src="/res/loginLoad.svg" /> &nbsp; Logging In ...');
@@ -103,6 +104,46 @@ $(document).ready(function() {
 		});
 		return false;
 	}
+});
+
+/* Script used for autocomplete */
+$(document).ready(function() {
+	$("#item1").keyup(function() {
+		var data = $("#foodItemsForm").serialize();
+	
+		$.ajax({
+			type : 'GET',
+			url : '../php/autocomplete.php',
+			data : data,
+			success : function(response) {
+				var json = JSON.parse(response).suggestions.suggestion;
+				$("#item1").autocomplete({
+					source : json
+				});
+				console.log(json);
+			}
+		});
+	});
+});
+
+/* Script used for autocomplete 2*/
+$(document).ready(function() {
+	$("#item2").keyup(function() {
+		var data = $("#foodItemsForm").serialize();
+	
+		$.ajax({
+			type : 'GET',
+			url : '../php/autocomplete2.php',
+			data : data,
+			success : function(response) {
+				var json = JSON.parse(response).suggestions.suggestion;
+				$("#item2").autocomplete({
+					source : json
+				});
+				console.log(json);
+			}
+		});
+	});
 });
 
 /* Script used to validate registration form */
