@@ -39,11 +39,7 @@ $current = $_SESSION['user_username'];
 // If the user doesn't enter a new password,
 // don't update the database with a blank password!
 $error = "";
-
-if (empty($update_password)) {
-    $error .= "errorPassword=empty";
-}     
-else if(!empty($update_password)) {
+if (!empty($update_password)) {
     // CHECK if password is at least 6 characters long and contain only alphanumeric characters
     $pattern = "/^[a-zA-Z0-9]{6,}$/";
 
@@ -58,17 +54,9 @@ else if(!empty($update_password)) {
         $sql = " UPDATE Users SET Password = '$encryptedPass', Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein', Calcium = '$update_calcium' WHERE Username = '$current' ";
     }
 } else {
-    
     // password is empty, so only update the user's calories, sugar, sodium, protein
     $sql = " UPDATE Users SET Calories = '$update_calories', Sugar = '$update_sugar', Sodium = '$update_sodium', Protein = '$update_protein', Calcium = '$update_calcium' WHERE Username = '$current' ";
 }
-
-if ($error !== "") {
-    $_SESSION['update-password']     = $update_password;
-    header("Location: ../manageAccount.php?" . $error);
-    exit();
-}
-    
 
 if ($conn->query($sql) === TRUE) {
     // update user preferences

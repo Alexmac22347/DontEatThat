@@ -23,5 +23,21 @@ Micheal
 Chen
 - How it works page has too much writing.
 - Took a while to figure out the two charts
+- typing in apple should show different types of apples in autocomplete
+  
+Sirine
++ Pretty clear
++ Actually read the How It Works page
+- Maybe emphasize the how it works, or show user what will happen 
+- possibly highlight "how it works"
+- If user doesnt specify "with peel" or "without peel" they would expect just 
+  cucumber. Or display both of them.
+- Cucumber without peel returns "potato without peel"
+- Make it a choice for the user (per grams or per serving)
+- add more explanation as to which is healthier
+
+Anonymous
+- Home page seems empty
+- queried items were different from input
 
 Overall, everyone says the general layout is nice and clean
