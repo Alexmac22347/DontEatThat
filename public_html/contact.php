@@ -15,7 +15,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="form_name">First name</label>
-                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name">
+                                <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your first name" autofocus>
                                 <label id="contactFormError0" class="form-error error">First name is required.</label>
                             </div>
                         </div>

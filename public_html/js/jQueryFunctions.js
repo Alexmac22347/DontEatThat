@@ -92,11 +92,16 @@ $(document).ready(function() {
 			data : data,
 			success : function(response) {
 				if (response == "success") {
+					$("#loginErr").hide();
 					$("#login_button").html('<img src="/res/loginLoad.svg" /> &nbsp; Logging In ...');
-					setTimeout(' window.location.href = "index.php"; ', 4000);
+					setTimeout(' window.location.href = "index.php"; ', 3300);
 				} else {
 					$("#loginErr").fadeIn(1000, function() {
-						$("#loginErr").html('<label class="error">' + response + '</label>');
+						//$("#loginErr").html('<label class="error">' + response + '</label>');
+						$("#loginErr").html('<div class="alert alert-danger alert-dismissable fade in">' + 
+												'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + 
+												response + 
+											'</div>');
 					});
 				}
 			}

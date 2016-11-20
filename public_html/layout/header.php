@@ -93,7 +93,7 @@
                         <form id="loginForm" method="post" action="login.php" name="login_form">
                             <div class="form-group">
                                 <label for="login-username">Username</label>
-                                <input id="login-username" class="form-control" type="text" placeholder="Enter Username" name="login-username">
+                                <input id="login-username" class="form-control" type="text" placeholder="Enter Username" name="login-username" autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="login-password">Password</label>

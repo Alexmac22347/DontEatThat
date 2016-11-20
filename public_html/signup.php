@@ -40,7 +40,7 @@
             <label for="signup-name" class="col-sm-2 control-label">Name</label>
             <div class="col-sm-4">
                 <input class="form-control" type="text" placeholder="Enter Name" id="signup-name" name="signup-name"
-                    value="<?php echo $_SESSION['signupname']; ?>">
+                    value="<?php echo $_SESSION['signupname']; ?>" autofocus>
                 <?php
                     // SERVER-SIDE VALIDATION FOR NAME
                     if ($errorName !== false) {

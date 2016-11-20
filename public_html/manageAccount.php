@@ -169,8 +169,8 @@
             <div style="padding-top: 40px;" class="form-group form-group-lg">
                 <!-- SAVE CHANGES -->
                 <div id = "container">
-                    <button type="submit" id="save-button" class="btn btn-success btn-lg">Update Account</button>
-                    <a data-toggle='modal' href='#' data-target='#deleteModal' id="delete-button" class="btn btn-danger btn-lg">Delete Account</a>
+                    <button type="submit" id="save-button" class="btn btn-success">Update Account</button>
+                    <a data-toggle='modal' href='#' data-target='#deleteModal' id="delete-button" class="btn btn-danger">Delete Account</a>
                 </div>
             </div>
         </form>
