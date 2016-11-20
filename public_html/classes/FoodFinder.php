@@ -72,7 +72,8 @@ class FoodFinder
                 "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"], // grams
                 "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"], // mg
                 "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
-                "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"] // grams
+                "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"], // grams
+                "calcium" => $rawFoodData["food"]["servings"]["serving"][0]["calcium"] // ???
             );
         }
 
@@ -90,7 +91,8 @@ class FoodFinder
                 "protein" => $rawFoodData["food"]["servings"]["serving"]["protein"], // grams
                 "sodium" => $rawFoodData["food"]["servings"]["serving"]["sodium"], // mg
                 "carbohydrate" => $rawFoodData["food"]["servings"]["serving"]["carbohydrate"], // grams
-                "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"] // grams
+                "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"], // grams
+                "calcium" => $rawFoodData["food"]["servings"]["serving"]["calcium"] // ???
             );
         }
     }
