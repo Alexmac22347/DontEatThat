@@ -139,4 +139,4 @@ Kenton - Resolved Issue #76: All errors now have same styling (0.5)
 
 Nov 19
 Kenton, Benny, Charn - Resolved Issue #52: Implemented autocomplete functionality (3)
-Alex, Adil - Fixed horrible namespace issues with Atoum/tests (3) (
+Alex, Adil - Fixed horrible namespace issues with Atoum/tests (3) (f1c3363c3c18e223e65732bce738be5a62915558)
