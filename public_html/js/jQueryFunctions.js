@@ -109,17 +109,16 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$("#item1").keyup(function() {
 		var data = $("#foodItemsForm").serialize();
-	
+
 		$.ajax({
 			type : 'GET',
-			url : '../php/autocomplete.php',
+			url : '../php/autocomplete.php?item=1',
 			data : data,
 			success : function(response) {
 				var json = JSON.parse(response).suggestions.suggestion;
 				$("#item1").autocomplete({
 					source : json
 				});
-				//console.log(json);
 			}
 		});
 	});
@@ -132,14 +131,13 @@ $(document).ready(function() {
 	
 		$.ajax({
 			type : 'GET',
-			url : '../php/autocomplete2.php',
+			url : '../php/autocomplete.php?item=2',
 			data : data,
 			success : function(response) {
 				var json = JSON.parse(response).suggestions.suggestion;
 				$("#item2").autocomplete({
 					source : json
 				});
-				//console.log(json);
 			}
 		});
 	});

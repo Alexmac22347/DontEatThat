@@ -142,3 +142,4 @@ Kenton, Benny, Charn - Resolved Issue #52: Implemented autocomplete functionalit
 Alex - replaced hardcoded keys with config (15 minutes) (18ddd52ec847c5e7cf8f3d5d4fa85848df752353)
 Alex, Adil - Fixed horrible namespace issues with Atoum/tests (3) (f1c3363c3c18e223e65732bce738be5a62915558)
 Kenton - Resolved Issue #84: User preferences not getting updated properly, Resolved Issue #86: Error 404 on Login (0.5)
+Alex - Refactored autocomplete code (1.5) (7c10eff47645ff9afb73d6e4a96aff049aa83736)
