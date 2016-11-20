@@ -10,11 +10,11 @@ side and receive a recommendation.
 
 ## Getting Started
 
-The files in public_html should be placed in a folder which is to be hosted
+The files in public_html should be placed in a folder which is hosted
 on the internet. We use a web host which was purchased from godaddy.com
 
 Certain php scripts require Oath keys or MySQL username/password/database names.
-These can be placed in a file: config/config.php
+These should be placed in a new file: config/config.php
 
 Here is an example of a config.php file:
 ```
@@ -31,6 +31,10 @@ return array(
 
 ?>
 ```
+
+DontEatThat! uses the [FatSecret Platform API](https://platform.fatsecret.com/api/) in order to retrieve
+food data. The autocomplete functionality also requires the premier version of the API. After signing up for the
+API, you should recieve a consumer key and a secret key. Place these in the config.php file as shown above.  
 
 Also, DontEatThat! requires at least PHP 5.5 to run. This is because the function used to encrypt user passwords is only
 available in PHP 5.5 and above.
