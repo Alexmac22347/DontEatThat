@@ -152,3 +152,4 @@ Kenton - Resolved Issue #99: improper error messages on invalid input (0.5)
 
 Nov 21
 Alex - Refactor results.php. Fixed some bugs in FoodComparer.php (2) (1b1e5682d1bb43372039bd5eef166f8f6fb7a5f2)
+Adil, Alex - Completed FoodFinderTest.php (1)
