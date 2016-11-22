@@ -34,7 +34,7 @@ class FoodComparer
     }
     
     // This method compares multiple food items, and returns an array sorted of food items
-    // sorted by healthiness. Note: everything is converted to grams here.
+    // sorted by healthiness.
     //
     // Input: foodDatas            - Array of different foods to be compared
     //        $useNormalizeWeights - set this to true if you want to compare 
@@ -53,26 +53,24 @@ function getScores($foodDatas, $useNormalizeWeights) {
 
         foreach ($foodDatas as &$foodData) {
 
-            $calories    = $this->convertToGrams($foodData['calories'], $foodData['metric_serving_unit']); // bad
-            $carbs       = $this->convertToGrams($foodData['carbohydrate'], $foodData['metric_serving_unit']); // good
-            $protein     = $this->convertToGrams($foodData['protein'], $foodData['metric_serving_unit']); // good
-            $fat         = $this->convertToGrams($foodData['fat'], $foodData['metric_serving_unit']); // bad
-            $cholesterol = $this->convertToGrams($foodData['cholesterol'], $foodData['metric_serving_unit']); // bad
-            $sodium      = $this->convertToGrams($foodData['sodium'], $foodData['metric_serving_unit']); // bad
-            $sugar       = $this->convertToGrams($foodData['sugar'], $foodData['metric_serving_unit']); // bad
-            $calcium     = $this->convertToGrams($foodData['calcium'], $foodData['metric_serving_unit']); // good
+            $calories    = $foodData['calories']; // bad
+            $carbs       = $foodData['carbohydrate']; // good
+            $protein     = $foodData['protein']; // good
+            $fat         = $foodData['fat']; // bad
+            $cholesterol = $foodData['cholesterol']; // bad
+            $sodium      = $foodData['sodium']; // bad
+            $sugar       = $foodData['sugar']; // bad
+            $calcium     = $foodData['calcium']; // good
 
             if ($useNormalizeWeights) {
-                $servingSizeGrams = $this->convertToGrams($foodData['metric_serving_amount'], $foodData['metric_serving_unit']);
-
-                $calories    = $this->normalizeWeight($calories, $servingSizeGrams);
-                $carbs       = $this->normalizeWeight($carbs, $servingSizeGrams);
-                $protein     = $this->normalizeWeight($protein, $servingSizeGrams);
-                $fat         = $this->normalizeWeight($fat, $servingSizeGrams);
-                $cholesterol = $this->normalizeWeight($cholesterol, $servingSizeGrams);
-                $sodium      = $this->normalizeWeight($sodium, $servingSizeGrams);
-                $sugar       = $this->normalizeWeight($sugar, $servingSizeGrams);
-                $calcium     = $this->normalizeWeight($calcium, $servingSizeGrams);
+                $calories    = $this->normalizeWeight($calories, $foodData['metric_serving_unit']);
+                $carbs       = $this->normalizeWeight($carbs, $foodData['metric_serving_unit']);
+                $protein     = $this->normalizeWeight($protein, $foodData['metric_serving_unit']);
+                $fat         = $this->normalizeWeight($fat, $foodData['metric_serving_unit']);
+                $cholesterol = $this->normalizeWeight($cholesterol, $foodData['metric_serving_unit']);
+                $sodium      = $this->normalizeWeight($sodium, $foodData['metric_serving_unit']);
+                $sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_unit']);
+                $calcium     = $this->normalizeWeight($calcium, $foodData['metric_serving_unit']);
             }
 
             $caloriesScale = 1;
@@ -135,15 +133,6 @@ function getScores($foodDatas, $useNormalizeWeights) {
         }
 
         return $foodDatas;
-    }
-
-
-    function convertToGrams($amount, $servingUnit) {
-        if ($servingUnit == "g") {
-            return $amount;
-        } else if ($servingUnit == "oz") {
-            return $amount * 28.35;
-        }
     }
 
     function normalizeWeight($field, $servingSize) {

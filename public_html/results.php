@@ -193,7 +193,7 @@ echo '
                <tbody>
                  <tr class=' . $highlight0 . '>
                    <td>' . $resultData[0]['food_name'] . '</td>
-                   <td>' . round($resultData[0]['metric_serving_amount']) . ' ' . $resultData[0]['metric_serving_unit'] . ' </td>
+                   <td>' . round($resultData[0]['metric_serving_amount']) . ' g </td>
                    <td>' . round($resultData[0]['calories']) . ' kcal</td>
                    <td>' . round($resultData[0]['fat']) . ' g</td>
                    <td>' . round($resultData[0]['sugar']) . ' g</td>
@@ -205,7 +205,7 @@ echo '
                
                  <tr class=' . $highlight1 . '>
                    <td>' . $resultData[1]['food_name'] . '</td>
-                   <td>' . round($resultData[1]['metric_serving_amount']) . ' ' . $resultData[1]['metric_serving_unit'] . ' </td>
+                   <td>' . round($resultData[1]['metric_serving_amount']) . ' g </td>
                    <td>' . round($resultData[1]['calories']) . ' kcal</td>
                    <td>' . round($resultData[1]['fat']) . ' g</td>
                    <td>' . round($resultData[1]['sugar']) . ' g</td>
