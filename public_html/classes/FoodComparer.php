@@ -48,7 +48,12 @@ class FoodComparer
 
         assert(count($foodDatas) >= 1);
 
-        foreach ($foodDatas as $foodData) {
+        // Add the score field to each foodDatas element
+        foreach($foodDatas as &$foodData) {
+            $foodData['score'] = 0.0;
+        }
+
+        foreach ($foodDatas as &$foodData) {
 
             $calories    = $this->convertToGrams($foodData['calories'], $foodData['metric_serving_unit']); // bad
             $carbs       = $this->convertToGrams($foodData['carbohydrate'], $foodData['metric_serving_unit']); // good
@@ -81,39 +86,39 @@ class FoodComparer
             if ($this->userCalories == "High") {
                 $caloriesScale = -10;
             }
-            
+
             if ($this->userCalories == "Low") {
                 $caloriesScale = 10;
             }
-            
+
             if ($this->userSugar == "High") {
                 $sugarScale = -10;
             }
-            
+
             if ($this->userSugar == "Low") {
                 $sugarScale = 10;
             }
-            
+
             if ($this->userSodium == "High") {
                 $sodiumScale = -10;
             }
-            
+
             if ($this->userSodium == "Low") {
                 $sodiumScale = 10;
             }
-            
+
             if ($this->userProtein == "High") {
                 $proteinScale = 10;
             }
-            
+
             if ($this->userProtein == "Low") {
                 $proteinScale = -10;
             }
-            
+
             if ($this->userCalcium == "High") {
                 $calciumScale = 10;
             }
-            
+
             if ($this->userCalcium == "Low") {
                 $calciumScale = -10;
             }
@@ -128,8 +133,6 @@ class FoodComparer
                 - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR) 
                 + ($calciumScale) * ($calcium / FoodComparer::DAILYCALCIUM) ;
 
-            // TODO: not sure about this
-            // Push back the latest score
             $foodData['score'] = $score;
         }
 
@@ -138,6 +141,7 @@ class FoodComparer
         usort($foodDatas, function($a, $b) {
             return $b['score'] - $a['score'];
         });
+
 
         return $foodDatas;
     }
@@ -151,7 +155,7 @@ class FoodComparer
         }
     }
 
-    private function normalizeWeight($field, $servingSize) {
+    function normalizeWeight($field, $servingSize) {
         return round(($field / $servingSize) * 100);
     }
 
