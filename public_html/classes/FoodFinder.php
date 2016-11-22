@@ -1,26 +1,44 @@
 <?php
+/**
+ * public_html/classes/FoodFinder.php
+ *
+ * This is a wrapper class for the FatSecret API. It filters out 
+ * unnecessary information.
+ *
+ * @package default
+ */
+
 
 namespace vendor\project;
 
-require_once ('lib/fat-secret-php/src/Client.php');
+require_once 'lib/fat-secret-php/src/Client.php';
 
-require_once ('lib/fat-secret-php/src/OAuthBase.php');
+require_once 'lib/fat-secret-php/src/OAuthBase.php';
 
-require_once ('lib/fat-secret-php/src/FatSecretException.php');
+require_once 'lib/fat-secret-php/src/FatSecretException.php';
 
-class FoodFinder
-
-{
+class FoodFinder {
     var $numberOfSearchTerms = 5;
     var $client;
 
-    function __construct($consumerKey, $secretKey)
-    {
-        $this->client = new Client($consumerKey, $secretKey);
+
+    /**
+     *
+     * @param string $consumerKey - API consumer key, provided by FatSecret
+     * @param string $secretKey - API secret key, provided by FatSecret
+     */
+    function __construct( $consumerKey, $secretKey ) {
+        $this->client = new Client( $consumerKey, $secretKey );
     }
 
-    function runQuery($searchTerm)
-    {
+
+    /**
+     *
+     * @param string $searchTerm - The name of the food you want to search for. Eg, 'Apple'
+     * @return array - An array containing various nutritional information about
+     *                 the food item.
+     */
+    function runQuery($searchTerm) {
         // This initial search does not give us enough data. It only contains a
         // few basic facts like ID, sugar, some other stuff I forgot
         $searchResult = $this->client->SearchFood($searchTerm, false, false, $this->numberOfSearchTerms);
@@ -35,7 +53,7 @@ class FoodFinder
         for ($i = 0; $i < $this->numberOfSearchTerms; $i++) {
             $rawFoodData = $this->client->GetFood($foodIDs[$i]);
             $foodData = $this->getRelevantData($rawFoodData);
-            if(isset($foodData)) {
+            if (isset($foodData)) {
                 break;
             }
         }
@@ -44,16 +62,21 @@ class FoodFinder
         return $foodData;
     }
 
-    function setNumberOfSearchTerms($num)
-    {
+
+    /**
+     *
+     * @param int $num - The number of items to search through when doing the API call.
+     *                   By default this is 5. After 5 items, the items returned by the API
+     *                   start to become less relevant.
+     */
+    function setNumberOfSearchTerms($num) {
         $this->numberOfSearchTerms = $num;
     }
 
-    private
-    function getRelevantData($rawFoodData)
-    { // This is the case where the query contains multiple different ways of serving
 
-        // If we went able to find something with a valid serving unit, 
+    private function getRelevantData($rawFoodData) { // This is the case where the query contains multiple different ways of serving
+
+        // If we went able to find something with a valid serving unit,
         // we set the foodData to null so that whoever uses this knows
         // Eg, for fried chicken, yeild after cooking, bones removed, sliced, with bone, etc
 
@@ -106,6 +129,7 @@ class FoodFinder
         }
     }
 
+
     private function convertToGrams($amount, $servingUnit) {
         if ($servingUnit == "g") {
             return $amount;
@@ -113,6 +137,9 @@ class FoodFinder
             return $amount * 28.35;
         }
     }
+
+
 }
+
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+// function to prepare SQL inputs
 function test_input($data)
 {
     $data = trim($data);
@@ -27,6 +28,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// prepare input for SQL query
 $update_password = test_input($_POST['update-password']);
 $update_calories = test_input($_POST['update-calories']);
 $update_sugar    = test_input($_POST['update-sugar']);

@@ -39,6 +39,53 @@ API, you should recieve a consumer key and a secret key. Place these in the conf
 Also, DontEatThat! requires at least PHP 5.5 to run. This is because the function used to encrypt user passwords is only
 available in PHP 5.5 and above.
 
+## Hosting on Linux
+
+Here's how to get the website running on localhost if you're a linux user.  
+1. First, install [XAMPP](https://www.apachefriends.org/download.html)  
+2. After installing, go to the folder /opt/lampp/htdocs  
+3. Remove everything in the folder htdocs, and copy all all the files and folders in DontEatThat/public_html into htdocs  
+4. Create a folder in /opt/lampp called config/  
+5. place your config.php in the config/ folder you just created. Heres the config.php I use:  
+```
+<?php
+
+return array(
+    'consumer_key' => 'get your own consumer key',
+    'secret_key' => 'get your own secret key',
+    'database_username' => 'root',
+    'database_password' => '',
+    'database_hostname' => 'localhost',
+    'database_name' => 'Group14DB'
+);
+
+?>
+
+```
+
+   Almost there! Now you need to setup the user database. 
+
+6. In a web browser, go to the url 'localhost/phpmyadmin'  
+7. Now, we have to create the user database  
+  1. Create a new database called "Group14DB"  
+  2. Create a new table in this database called "Users"  
+  3. Go to the "Users" table, then click on the "Structures" tab  
+  4. Add the following columns (case sensitive. Data type is shown in parentheses):  
+    * Name (varchar(64))  
+    * Username (varchar(64))  
+    * Password (varchar(256))  
+    * Calories (varchar(8))  
+    * Sugar (varchar(8))  
+    * Sodium (varchar(8))  
+    * Protein (varchar(8))  
+    * Calcium (varchar(8))  
+9. Now, start the XAMPP Webserver:  
+```
+sudo /opt/lamp/xampp start
+```
+You're done! Check out the website by going to 'localhost' on your web browser.   
+
+
 
 ## Running Tests
 Tests are run using Atoum. Make sure you have composer installed (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).

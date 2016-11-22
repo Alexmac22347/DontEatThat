@@ -15,6 +15,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// check to see if user is logged in
 if (isset($_SESSION['user_username']))
     $username = $_SESSION['user_username'];
 
@@ -31,7 +32,7 @@ if (isset($_POST['update-password']) && $_POST['update-password'] != "") {
         exit();
     } else {
         // user made a change
-        echo "success";
+        echo "success"; // let ajax call know that we can now invoke the account update script
         exit();
     }
 } else {
@@ -46,7 +47,7 @@ if (isset($_POST['update-password']) && $_POST['update-password'] != "") {
         exit();
     } else {
         // user made a change
-        echo "success";
+        echo "success"; // let ajax call know that we can now invoke the account update script
         exit();
     }
 }

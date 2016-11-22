@@ -17,12 +17,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// get user
 $user = $_SESSION['user_username'];
 
 $sql = " DELETE FROM Users WHERE Username = '$user' ";
 
 if ($conn->query($sql) === TRUE) {
-    session_destroy();
+    session_destroy(); // "logout"
     header("Location: ../index.php");
     exit();
 } else {

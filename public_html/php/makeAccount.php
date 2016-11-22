@@ -84,7 +84,7 @@ if (empty($signuppassword)) {
 }
 
 if ($error !== "") {
-    $_SESSION['signupname']     = $signupname;
+    $_SESSION['signupname']     = $signupname; // save name and username, so that user does not have to retype on failed signup
     $_SESSION['signupusername'] = $signupusername;
     header("Location: signup.php?" . $error);
     exit();

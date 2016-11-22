@@ -15,6 +15,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// grab username and see if it exists in the database
 $loginUsername  = mysqli_real_escape_string($conn, $_POST['login-username']); // prevent SQL Injection
 $loginPassword  = $_POST['login-password'];
 $sql            = " SELECT * FROM Users WHERE Username = '$loginUsername' ";
@@ -22,6 +23,7 @@ $result         = mysqli_query($conn, $sql);
 $row            = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $hashedPassword = $row['Password'];
 
+// see if input password is the same as the one in the database
 $passwordsMatch = password_verify($loginPassword, $hashedPassword);
 
 if ($passwordsMatch) {
