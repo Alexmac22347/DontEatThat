@@ -149,3 +149,6 @@ Alex - Created FoodComparer class, and test stubs for that class (1) (2868a5ef25
 Alex - Updated readme, added phptidy, edited countdown page, updated composer.json, updated upload script (minor things) (1)
 Kenton - Resolved Issue #92: Login verification not disappearing on successful login, UI clean up for home page, login, manage acc (1.5)
 Kenton - Resolved Issue #99: improper error messages on invalid input (0.5)
+
+Nov 21
+Alex - Refactor results.php. Fixed some bugs in FoodComparer.php (2) (1b1e5682d1bb43372039bd5eef166f8f6fb7a5f2)
