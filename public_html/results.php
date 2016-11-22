@@ -53,6 +53,7 @@ include("layout/header.php");
 						<th>Protein</th>
 						<th>Cholesterol</th>
 						<th>Carbohydrates</th>
+						<th>Calcium</th>
 					</tr>
 				</thead>
 				<?php
@@ -85,6 +86,7 @@ $normalizedSodiumFood0 = $foodComparer->normalizeWeight($resultData[0]['sodium']
 $normalizedProteinFood0 = $foodComparer->normalizeWeight($resultData[0]['protein'], $resultData[0]['metric_serving_amount']);
 $normalizedCholestrolFood0 = $foodComparer->normalizeWeight($resultData[0]['cholesterol'], $resultData[0]['metric_serving_amount']);
 $normalizedCarbohydrateFood0 = $foodComparer->normalizeWeight($resultData[0]['carbohydrate'], $resultData[0]['metric_serving_amount']);
+$normalizedCalciumFood0 = $foodComparer->normalizeWeight($resultData[0]['calcium'], $resultData[0]['metric_serving_amount']);
 
 $normalizedCaloriesFood1 = $foodComparer->normalizeWeight($resultData[1]['calories'], $resultData[1]['metric_serving_amount']);
 $normalizedFatFood1 = $foodComparer->normalizeWeight($resultData[1]['fat'], $resultData[1]['metric_serving_amount']);
@@ -93,6 +95,7 @@ $normalizedSodiumFood1 = $foodComparer->normalizeWeight($resultData[1]['sodium']
 $normalizedProteinFood1 = $foodComparer->normalizeWeight($resultData[1]['protein'], $resultData[1]['metric_serving_amount']);
 $normalizedCholestrolFood1 = $foodComparer->normalizeWeight($resultData[1]['cholesterol'], $resultData[1]['metric_serving_amount']);
 $normalizedCarbohydrateFood1 = $foodComparer->normalizeWeight($resultData[1]['carbohydrate'], $resultData[1]['metric_serving_amount']);
+$normalizedCalciumFood1 = $foodComparer->normalizeWeight($resultData[1]['calcium'], $resultData[1]['metric_serving_amount']);
 
 echo '
                <tbody>
@@ -105,6 +108,7 @@ echo '
 				   <td>' . round($normalizedProteinFood0) . ' g</td>
 				   <td>' . round($normalizedCholestrolFood0) . ' mg</td>
 				   <td>' . round($normalizedCarbohydrateFood0) . ' g</td>
+				   <td>' . round($normalizedCalciumFood0) . ' %</td>
                  </tr>
                
                  <tr class=' . $highlight1 . '>
@@ -116,6 +120,7 @@ echo '
 				   <td>' . round($normalizedProteinFood1) . ' g</td>
 				   <td>' . round($normalizedCholestrolFood1) . ' mg</td>
 				   <td>' . round($normalizedCarbohydrateFood1) . ' g</td>
+				   <td>' . round($normalizedCalciumFood1) . ' %</td>
                  </tr>
                </tbody>
                ';
@@ -165,6 +170,7 @@ if (!isset($_SESSION['user_username'])) {
 							<th>Protein</th>
 							<th>Cholesterol</th>
 							<th>Carbohydrates</th>
+							<th>Calcium</th>
 						</tr>
 					</thead>
 					<?php
@@ -201,6 +207,7 @@ echo '
 				   <td>' . round($resultData[0]['protein']) . ' g</td>
 				   <td>' . round($resultData[0]['cholesterol']) . ' mg</td>
 				   <td>' . round($resultData[0]['carbohydrate']) . ' g</td>
+				   <td>' . round($resultData[0]['calcium']) . ' %</td>
                  </tr>
                
                  <tr class=' . $highlight1 . '>
@@ -213,6 +220,7 @@ echo '
 				   <td>' . round($resultData[1]['protein']) . ' g</td>
 				   <td>' . round($resultData[1]['cholesterol']) . ' mg</td>
 				   <td>' . round($resultData[1]['carbohydrate']) . ' g</td>
+				   <td>' . round($resultData[1]['calcium']) . ' %</td>
                  </tr>
                </tbody>
                ';
