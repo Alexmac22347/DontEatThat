@@ -158,3 +158,4 @@ Nov 22
 Kenton - Resolved Issue #69: User updates with no changes [bug] => now properly prompts user (1.5)
 Alex - Fixed two bugs in results.php and FoodComparer.php (1) (c05ddf60a90977a3dc14ea0e7322e0501451bbb3)
 Benny - Updated requirements document (2)
+Alex - Fixed FoodFinder bug. The wrong things were being converted to grams (.5) (9f2df56620db5ad2cb03c12a3a0465ef15a85d9d)
