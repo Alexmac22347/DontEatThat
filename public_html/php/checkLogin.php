@@ -32,6 +32,7 @@ if ($passwordsMatch) {
     $_SESSION['user_sugar']    = $row['Sugar'];
     $_SESSION['user_sodium']   = $row['Sodium'];
     $_SESSION['user_protein']  = $row['Protein'];
+    $_SESSION['user_calcium']  = $row['Calcium'];
     echo "success"; // username and password match
 } else
     echo "Your username or password is incorrect. Please try again.";
