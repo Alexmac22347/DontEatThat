@@ -40,11 +40,9 @@ class FoodComparer
     //        $useNormalizeWeights - set this to true if you want to compare 
     //                               100 grams of each item, and disregard the serving size
     //
-    // Returns:                    - The foodDatas array will be returned, but it will be sorted by healthiness
-    //                               The healthiest food will be the first element in the array.
-    //                               Also each array element will have a new field called 'score',
-    //                               which represents how healthy that food is (higher number is healthier)
-    function getHealthiestFood($foodDatas, $useNormalizeWeights) {
+    // Returns:                    - The foodDatas array will be returned, but each element will have a new field call "score"
+    //                               The higher the score, the healthier the food
+function getScores($foodDatas, $useNormalizeWeights) {
 
         assert(count($foodDatas) >= 1);
 
@@ -135,13 +133,6 @@ class FoodComparer
 
             $foodData['score'] = $score;
         }
-
-        // Sort foodData according to the new field "score"
-        // (in descending order)
-        usort($foodDatas, function($a, $b) {
-            return $b['score'] - $a['score'];
-        });
-
 
         return $foodDatas;
     }
