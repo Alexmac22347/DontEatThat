@@ -69,14 +69,14 @@ class FoodFinder
                 "food_id" => $rawFoodData["food"]["food_id"],
                 "food_name" => $rawFoodData["food"]["food_name"],
                 "metric_serving_amount" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["metric_serving_amount"], $metric_serving_unit),
-                "cholesterol" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], $metric_serving_unit), //mg
-                "calories" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["calories"], $metric_serving_unit), // kcal
-                "fat" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["fat"], $metric_serving_unit), // grams
-                "protein" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["protein"], $metric_serving_unit), // grams
-                "sodium" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["sodium"], $metric_serving_unit), // mg
-                "carbohydrate" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], $metric_serving_unit), // grams
-                "sugar" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["sugar"], $metric_serving_unit), // grams
-                "calcium" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["calcium"], $metric_serving_unit) // ???
+                "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], //mg
+                "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"], // kcal
+                "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"], // grams
+                "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"], // grams
+                "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"], // mg
+                "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
+                "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"], // grams
+                "calcium" => $rawFoodData["food"]["servings"]["serving"][0]["calcium"] // ???
             );
         }
 
@@ -94,14 +94,14 @@ class FoodFinder
                 "food_id" => $rawFoodData["food"]["food_id"],
                 "food_name" => $rawFoodData["food"]["food_name"],
                 "metric_serving_amount" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["metric_serving_amount"], $metric_serving_unit),
-                "cholesterol" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["cholesterol"], $metric_serving_unit), //mg
-                "calories" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["calories"], $metric_serving_unit), // kcal
-                "fat" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["fat"], $metric_serving_unit), // grams
-                "protein" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["protein"], $metric_serving_unit), // grams
-                "sodium" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["sodium"], $metric_serving_unit), // mg
-                "carbohydrate" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["carbohydrate"], $metric_serving_unit), // grams
-                "sugar" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["sugar"], $metric_serving_unit), // grams
-                "calcium" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["calcium"], $metric_serving_unit) // ???
+                "cholesterol" => $rawFoodData["food"]["servings"]["serving"]["cholesterol"], //mg
+                "calories" => $rawFoodData["food"]["servings"]["serving"]["calories"], // kcal
+                "fat" => $rawFoodData["food"]["servings"]["serving"]["fat"], // grams
+                "protein" => $rawFoodData["food"]["servings"]["serving"]["protein"], // grams
+                "sodium" => $rawFoodData["food"]["servings"]["serving"]["sodium"], // mg
+                "carbohydrate" => $rawFoodData["food"]["servings"]["serving"]["carbohydrate"], // grams
+                "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"], // grams
+                "calcium" => $rawFoodData["food"]["servings"]["serving"]["calcium"] // ???
             );
         }
     }
