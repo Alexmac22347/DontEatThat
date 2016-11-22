@@ -191,3 +191,47 @@ $(document).ready(function() {
 	});
 });
 
+/* Script used to validate account updates */
+$(document).ready(function() {
+	$("#save-button").click(function(event) {
+		event.preventDefault();
+		updateForm();
+	});
+
+	function updateForm() {
+		var data = $("#updateForm").serialize();
+
+		$.ajax({
+			type : 'POST',
+			url : '../php/checkUpdate.php',
+			data : data,
+			success : function(response) {
+				if (response == "same pass") {
+					$("#updateErr").html('<div class="alert alert-danger alert-dismissable fade in">' + 
+											'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + 
+											'The password you have entered is the same as the one you had before. Please enter a different password.' + 
+										 '</div>');
+				} else if (response == "same prefs") {
+					$("#updateErr").html('<div class="alert alert-danger alert-dismissable fade in">' + 
+											'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + 
+											'Error: Your meal preferences did not change!' + 
+										 '</div>');
+				} else if (response == "success") {
+					$("#updateErr").hide();
+					update();
+					setTimeout(' window.location.href = "../index.php"; ', 0);
+				}
+			}
+		});
+	}
+
+	function update() {
+		var data = $("#updateForm").serialize();
+
+		$.ajax({
+			type : 'POST',
+			url : '../php/accountUpdate.php',
+			data : data
+		});
+	}
+});

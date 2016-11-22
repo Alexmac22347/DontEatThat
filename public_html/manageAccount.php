@@ -89,7 +89,8 @@
     ?>
 <div>
     <div class="container-fluid">
-        <form class="form-horizontal" action="php/accountUpdate.php" method="post">
+        <form id="updateForm" class="form-horizontal" action="php/accountUpdate.php" method="post">
+            <div id="updateErr" align="center"></div>
             <h2 style="padding-left: 0;">Manage Account</h2>
             <div style="padding-top: 0px; padding-left: 15px; padding-right: 15px" class="form-group">
                 <!-- FIRST NAME -->
