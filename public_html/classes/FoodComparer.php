@@ -63,14 +63,14 @@ function getScores($foodDatas, $useNormalizeWeights) {
             $calcium     = $foodData['calcium']; // good
 
             if ($useNormalizeWeights) {
-                $calories    = $this->normalizeWeight($calories, $foodData['metric_serving_unit']);
-                $carbs       = $this->normalizeWeight($carbs, $foodData['metric_serving_unit']);
-                $protein     = $this->normalizeWeight($protein, $foodData['metric_serving_unit']);
-                $fat         = $this->normalizeWeight($fat, $foodData['metric_serving_unit']);
-                $cholesterol = $this->normalizeWeight($cholesterol, $foodData['metric_serving_unit']);
-                $sodium      = $this->normalizeWeight($sodium, $foodData['metric_serving_unit']);
-                $sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_unit']);
-                $calcium     = $this->normalizeWeight($calcium, $foodData['metric_serving_unit']);
+                $calories    = $this->normalizeWeight($calories, $foodData['metric_serving_amount']);
+                $carbs       = $this->normalizeWeight($carbs, $foodData['metric_serving_amount']);
+                $protein     = $this->normalizeWeight($protein, $foodData['metric_serving_amount']);
+                $fat         = $this->normalizeWeight($fat, $foodData['metric_serving_amount']);
+                $cholesterol = $this->normalizeWeight($cholesterol, $foodData['metric_serving_amount']);
+                $sodium      = $this->normalizeWeight($sodium, $foodData['metric_serving_amount']);
+                $sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_amount']);
+                $calcium     = $this->normalizeWeight($calcium, $foodData['metric_serving_amount']);
             }
 
             $caloriesScale = 1;

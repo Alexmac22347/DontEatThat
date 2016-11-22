@@ -72,7 +72,7 @@ $highlight1 = "";
 
 // logic to determine which food to highlight
 
-if ($scoredFoods[0]['food_id'] > $scoredData[1]['food_id']) {
+if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
     $highlight0 = "success";
 } else {
     $highlight1 = "success";
@@ -183,7 +183,7 @@ $highlight1 = "";
 
 // logic to determine which food to highlight
 
-if ($scoredFoods[0]['score'] > $scoredFoods[1]['food_id']) {
+if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
     $highlight0 = "success";
 } else {
     $highlight1 = "success";

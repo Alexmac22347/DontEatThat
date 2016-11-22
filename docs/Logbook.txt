@@ -156,3 +156,4 @@ Adil, Alex - Completed FoodFinderTest.php (1)
 
 Nov 22
 Kenton - Resolved Issue #69: User updates with no changes [bug] => now properly prompts user (1.5)
+Alex - Fixed two bugs in results.php and FoodComparer.php (1) (c05ddf60a90977a3dc14ea0e7322e0501451bbb3)
