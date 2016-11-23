@@ -6,7 +6,7 @@
 <div align="center" style="padding-top: 5%;">
     <div class="container-fluid">
         <img class="img-responsive title-style" src="res/logo.jpg">          
-        <h2 style="font-size: 3vw;">Please Enter Two Food Items</h2>
+        <h2 style="font-size: 2.5vw;">Not sure what to eat? Pop it in and we'll tell you!</h2>
         <form id="foodItemsForm" class="form-inline" action="results.php">
             <div>
                 <div class="form-group food1">
