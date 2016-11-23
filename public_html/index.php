@@ -5,7 +5,7 @@
 <!-- Beginning of logo, input fields and buttons -->
 <div align="center" style="padding-top: 5%;">
     <div class="container-fluid">
-        <img class="img-responsive title-style" src="res/logo.jpg">          
+        <img class="img-responsive title-style" src="res/logo.svg">          
         <h2 style="font-size: 2.5vw;">Not sure what to eat? Pop it in and we'll tell you!</h2>
         <form id="foodItemsForm" class="form-inline" action="results.php">
             <div>
