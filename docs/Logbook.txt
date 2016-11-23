@@ -163,3 +163,6 @@ Alex - Comment and refactor php classes (.5) (eddd0a9412ee17f856c393efd302aabc5c
 Alex - Removed special character check (15 minutes) (da88b1b1ddcf5b96804fcc81c6c125c325660eef)
 Alex - Wrote one FoodComparer test (.5) (bc19d6231716c36d12d63933ecbfe0afb03f00ae)
 Adil - Wrote the rest of the FoodComparer tests (1) (afb1d87acb5e5e81e352a35703fe46a346833c3b)
+
+Nov 23
+Alex - Check for foods that are (almost) equally healthy (a2fb6503f9eabbadc54b3c637d927eaf2ec725b7)

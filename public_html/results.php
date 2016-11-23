@@ -67,13 +67,15 @@ if (!isset($_SESSION['user_username'])) {
 
 $scoredFoods = $foodComparer->getScores(array($resultData[0], $resultData[1]), true);
 
-// variables used to highlight a food item
-$highlight0 = "";
-$highlight1 = "";
 
 // logic to determine which food to highlight
 
-if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+// variables used to highlight a food item
+// TODO: MAGIC NUMBER
+if(abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < .05) {
+    $highlight0 = "";
+    $highlight1 = "";
+} else if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
     $highlight0 = "success";
 } else {
     $highlight1 = "success";
@@ -139,16 +141,21 @@ echo '
 
 // print out the healthier food item
 if (!isset($_SESSION['user_username'])) {
-    if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+    // TODO: MAGIC NUMBER .05, STORE SOMEWHERE?
+    if(abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < .05) {
+        echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+    } else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
         echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
         echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
     }
 } else { // user logged in
-    if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
-        echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+    if(abs($scoredFoods[0]['score'] - $scoredFoods[1]['score'] < .05)) {
+        echo '<p style="text-align: center;">' . 'Based on your preferences ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+    } if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
-        echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
     }
 }
 
@@ -183,13 +190,11 @@ if (!isset($_SESSION['user_username'])) {
 
 $scoredFoods = $foodComparer->getScores(array($resultData[0], $resultData[1]), false);
 
-// variables used to highlight a food item
-$highlight0 = "";
-$highlight1 = "";
-
 // logic to determine which food to highlight
-
-if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+if(abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < .05) {
+    $highlight0 = "";
+    $highlight1 = "";
+} else if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
     $highlight0 = "success";
 } else {
     $highlight1 = "success";
@@ -239,13 +244,17 @@ echo '
 
 // print out the healthier food item
 if (!isset($_SESSION['user_username'])) {
-    if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+    if(abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < .05) {
+        echo '<p style="text-align: center;">' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+    } else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
         echo '<p style="text-align: center;">' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
         echo '<p style="text-align: center;">' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
     }
 } else { // user logged in
-    if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+    if(abs($scoredFoods[0]['score'] - $scoredFoods[1]['score'] < .05)) {
+        echo '<p style="text-align: center;">' . 'Based on your preferences ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+    } else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
         echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
         echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
