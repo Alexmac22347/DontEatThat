@@ -160,3 +160,4 @@ Alex - Fixed two bugs in results.php and FoodComparer.php (1) (c05ddf60a90977a3d
 Benny - Updated requirements document (2)
 Alex - Fixed FoodFinder bug. The wrong things were being converted to grams (.5) (9f2df56620db5ad2cb03c12a3a0465ef15a85d9d)
 Alex - Comment and refactor php classes (.5)
+Alex - Removed special character check (15 minutes) (da88b1b1ddcf5b96804fcc81c6c125c325660eef)
