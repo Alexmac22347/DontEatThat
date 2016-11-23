@@ -18,7 +18,6 @@ class FoodComparer extends atoum\test
         $food1 = array(
             "food_id" => "123",
             "food_name" => "Panini",
-            "metric_serving_unit" => "g",
             "metric_serving_amount" => "50",
             "cholesterol" => "12", //mg
             "calories" => "111", // kcal
@@ -30,15 +29,50 @@ class FoodComparer extends atoum\test
             "calcium" => "3" // ???
         );
 
-        $sortedFoodDatas = $foodComparer->getHealthiestFood(array($food1), true);
+        $scoredFoodDatas = $foodComparer->getScores(array($food1), true);
 
-        $this->string($sortedFoodDatas[0]['food_name'])->isEqualTo('Panini');
-        $this->string($sortedFoodDatas[0]['food_id'])->isEqualTo('123');
+        // In this case, the score doesnt really matter because theres nothing
+        // to compare it to
+        $this->string($scoredFoodDatas[0]['food_name'])->isEqualTo('Panini');
     }
 
     public function testAppleVsFriedChicken()
     {
-        // Fill in code
+        $foodComparer = new project\FoodComparer("Normal","Normal","Normal","Normal","Normal");
+
+        $apple = array(
+            "food_id" => "123",
+            "food_name" => "Apple",
+            "metric_serving_amount" => "125",
+            "cholesterol" => "0", //mg
+            "calories" => "65", // kcal
+            "fat" => "0", // grams
+            "protein" => "0", // grams
+            "sodium" => "1", // mg
+            "carbohydrate" => "17", // grams
+            "sugar" => "13", // grams
+            "calcium" => "1" // ???
+        );
+
+        $friedChicken = array(
+            "food_id" => "321",
+            "food_name" => "Baked or Fried Chicken Breast with Skin",
+            "metric_serving_amount" => "120",
+            "cholesterol" => "88", //mg
+            "calories" => "313", // kcal
+            "fat" => "16", // grams
+            "protein" => "29", // grams
+            "sodium" => "340", // mg
+            "carbohydrate" => "11", // grams
+            "sugar" => "0", // grams
+            "calcium" => "2" // ???
+        );
+
+        $scoredFoodDatas = $foodComparer->getScores(array($apple, $friedChicken), true);
+
+        // scoredFoodDatas[0] is the apple, scoredFoodDatas[1] is the chicken
+        // The apple should have a higher score than the fried chicken
+        $this->float($scoredFoodDatas[0]['score'])->isGreaterThan($scoredFoodDatas[1]['score']);
     }
 
     public function testThreeFoods()
@@ -57,11 +91,6 @@ class FoodComparer extends atoum\test
     }
 
     public function testMixHighLow()
-    {
-        // Fill in code
-    }
-
-    public function testOzAndGrams()
     {
         // Fill in code
     }
