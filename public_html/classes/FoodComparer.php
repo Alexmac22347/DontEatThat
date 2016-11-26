@@ -165,16 +165,27 @@ class FoodComparer {
                 $calciumScale = -10;
             }
 
+            // This really should be done to every field.
+            // However, many foods have an amount of protein
+            // which is a large portion of the daily intake,
+            // so they overwhelm the algorithm.
+            // When the amount of protein you eat 
+            // approaches the daily amount, it becomes
+            // less healthy. this is reflected in this variable.
+            // As the amount of protein approaches the daily amount,
+            // this variable approaches 0
+            $proteinNormalizer = -(1.0 / FoodComparer::DAILYPROTEIN) * ($protein) + 1.0;
 
             $score = -($caloriesScale) * ($calories / FoodComparer::DAILYCALORIES)
                 + ($carbs / FoodComparer::DAILYCARBS)
-                + ($proteinScale) * ($protein / FoodComparer::DAILYPROTEIN)
+                + ($proteinNormalizer) * ($proteinScale) * ($protein / FoodComparer::DAILYPROTEIN)
                 - ($fat / FoodComparer::DAILYFAT)
                 - ($cholesterol / FoodComparer::DAILYCHOLESTEROL)
                 - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM)
                 - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR)
                 + ($calciumScale) * ($calcium / FoodComparer::DAILYCALCIUM) ;
 
+            echo $foodData['food_name'] . " " . $score . "<br>";
             $foodData['score'] = $score;
         }
 
