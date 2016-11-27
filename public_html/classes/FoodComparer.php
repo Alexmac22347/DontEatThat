@@ -8,7 +8,6 @@
  * @package default
  */
 
-
 namespace vendor\project;
 
 class FoodComparer {

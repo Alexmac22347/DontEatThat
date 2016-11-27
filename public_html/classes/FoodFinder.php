@@ -140,7 +140,6 @@ class FoodFinder {
 				"vitamin_c" => $rawFoodData["food"]["servings"]["serving"]["vitamin_c"], // percentage of daily recommended value
                 "calcium" => $rawFoodData["food"]["servings"]["serving"]["calcium"], // percentage of daily recommended value
 				"iron" => $rawFoodData["food"]["servings"]["serving"]["iron"] // percentage of daily recommended value
-				
             );
         }
     }

@@ -54,6 +54,13 @@ include("layout/header.php");
 						<th>Sugar</th>
 						<th>Sodium</th>
 						<th>Cholesterol</th>
+						
+						<th>Potassium</th>
+						<th>Fiber</th>
+						<th>Vitamin A</th>
+						<th>Vitamin C</th>
+						<th>Calcium</th>
+						<th>Iron</th>
 					</tr>
 				</thead>
 				<?php
@@ -88,6 +95,13 @@ $normalizedCholestrolFood0 = $foodComparer->normalizeWeight($resultData[0]['chol
 $normalizedCarbohydrateFood0 = $foodComparer->normalizeWeight($resultData[0]['carbohydrate'], $resultData[0]['metric_serving_amount']);
 $normalizedCalciumFood0 = $foodComparer->normalizeWeight($resultData[0]['calcium'], $resultData[0]['metric_serving_amount']);
 
+$normalizedPotassiumFood0 = $foodComparer->normalizeWeight($resultData[0]['potassium'], $resultData[0]['metric_serving_amount']);
+$normalizedFiberFood0 = $foodComparer->normalizeWeight($resultData[0]['fiber'], $resultData[0]['metric_serving_amount']);
+$normalizedVitaminAFood0 = $foodComparer->normalizeWeight($resultData[0]['vitamin_a'], $resultData[0]['metric_serving_amount']);
+$normalizedVitaminCFood0 = $foodComparer->normalizeWeight($resultData[0]['vitamin_c'], $resultData[0]['metric_serving_amount']);
+$normalizedIronFood0 = $foodComparer->normalizeWeight($resultData[0]['iron'], $resultData[0]['metric_serving_amount']);
+
+
 $normalizedCaloriesFood1 = $foodComparer->normalizeWeight($resultData[1]['calories'], $resultData[1]['metric_serving_amount']);
 $normalizedFatFood1 = $foodComparer->normalizeWeight($resultData[1]['fat'], $resultData[1]['metric_serving_amount']);
 $normalizedSugarFood1 = $foodComparer->normalizeWeight($resultData[1]['sugar'], $resultData[1]['metric_serving_amount']);
@@ -96,6 +110,12 @@ $normalizedProteinFood1 = $foodComparer->normalizeWeight($resultData[1]['protein
 $normalizedCholestrolFood1 = $foodComparer->normalizeWeight($resultData[1]['cholesterol'], $resultData[1]['metric_serving_amount']);
 $normalizedCarbohydrateFood1 = $foodComparer->normalizeWeight($resultData[1]['carbohydrate'], $resultData[1]['metric_serving_amount']);
 $normalizedCalciumFood1 = $foodComparer->normalizeWeight($resultData[1]['calcium'], $resultData[1]['metric_serving_amount']);
+
+$normalizedPotassiumFood1 = $foodComparer->normalizeWeight($resultData[1]['potassium'], $resultData[1]['metric_serving_amount']);
+$normalizedFiberFood1 = $foodComparer->normalizeWeight($resultData[1]['fiber'], $resultData[1]['metric_serving_amount']);
+$normalizedVitaminAFood1 = $foodComparer->normalizeWeight($resultData[1]['vitamin_a'], $resultData[1]['metric_serving_amount']);
+$normalizedVitaminCFood1 = $foodComparer->normalizeWeight($resultData[1]['vitamin_c'], $resultData[1]['metric_serving_amount']);
+$normalizedIronFood1 = $foodComparer->normalizeWeight($resultData[1]['iron'], $resultData[1]['metric_serving_amount']);
 
 echo '
                <tbody>
@@ -106,6 +126,13 @@ echo '
                    <td>' . round($normalizedSugarFood0) . ' g</td>
                    <td>' . round($normalizedSodiumFood0) . ' mg</td>
 				   <td>' . round($normalizedCholestrolFood0) . ' mg</td>
+				   
+				   <td>' . round($normalizedPotassiumFood0) . ' mg</td>
+                   <td>' . round($normalizedFiberFood0) . ' g</td>
+                   <td>' . round($normalizedVitaminAFood0) . ' %</td>
+                   <td>' . round($normalizedVitaminCFood0) . ' %</td>
+				   <td>' . round($normalizedCalciumFood0) . ' %</td>
+				   <td>' . round($normalizedIronFood0) . ' %</td>
                  </tr>
                
                  <tr class=' . $highlight1 . '>
@@ -115,6 +142,13 @@ echo '
                    <td>' . round($normalizedSugarFood1) . ' g</td>
                    <td>' . round($normalizedSodiumFood1) . ' mg</td>
 				   <td>' . round($normalizedCholestrolFood1) . ' mg</td>
+				   
+				   <td>' . round($normalizedPotassiumFood1) . ' mg</td>
+                   <td>' . round($normalizedFiberFood1) . ' g</td>
+                   <td>' . round($normalizedVitaminAFood1) . ' %</td>
+                   <td>' . round($normalizedVitaminCFood1) . ' %</td>
+				   <td>' . round($normalizedCalciumFood1) . ' %</td>
+				   <td>' . round($normalizedIronFood1) . ' %</td>
                  </tr>
                </tbody>
                ';
@@ -166,6 +200,13 @@ if (!isset($_SESSION['user_username'])) {
 							<th>Sugar</th>
 							<th>Sodium</th>
 							<th>Cholesterol</th>
+							
+							<th>Potassium</th>
+							<th>Fiber</th>
+							<th>Vitamin A</th>
+							<th>Vitamin C</th>
+							<th>Calcium</th>
+							<th>Iron</th>
 						</tr>
 					</thead>
 					<?php
@@ -200,6 +241,13 @@ echo '
                    <td>' . round($resultData[0]['sugar']) . ' g</td>
                    <td>' . round($resultData[0]['sodium']) . ' mg</td>
 				   <td>' . round($resultData[0]['cholesterol']) . ' mg</td>
+				   
+				   <td>' . round($resultData[0]['potassium']) . ' mg</td>
+                   <td>' . round($resultData[0]['fiber']) . ' g</td>
+                   <td>' . round($resultData[0]['vitamin_a']) . ' %</td>
+                   <td>' . round($resultData[0]['vitamin_c']) . ' %</td>
+				   <td>' . round($resultData[0]['calcium']) . ' %</td>
+				   <td>' . round($resultData[0]['iron']) . ' %</td>
                  </tr>
                
                  <tr class=' . $highlight1 . '>
@@ -210,6 +258,13 @@ echo '
                    <td>' . round($resultData[1]['sugar']) . ' g</td>
                    <td>' . round($resultData[1]['sodium']) . ' mg</td>
 				   <td>' . round($resultData[1]['cholesterol']) . ' mg</td>
+				   
+				   <td>' . round($resultData[1]['potassium']) . ' mg</td>
+                   <td>' . round($resultData[1]['fiber']) . ' g</td>
+                   <td>' . round($resultData[1]['vitamin_a']) . ' %</td>
+                   <td>' . round($resultData[1]['vitamin_c']) . ' %</td>
+				   <td>' . round($resultData[1]['calcium']) . ' %</td>
+				   <td>' . round($resultData[1]['iron']) . ' %</td>
                  </tr>
                </tbody>
                ';
