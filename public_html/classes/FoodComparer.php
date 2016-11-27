@@ -190,7 +190,8 @@ class FoodComparer
             // this variable approaches 0
             $proteinNormalizer = -(1.0 / FoodComparer::DAILYPROTEIN) * ($protein) + 1.0;
             
-            $score = -($caloriesScale) * ($calories / FoodComparer::DAILYCALORIES) - ($fat / FoodComparer::DAILYFAT) - ($cholesterol / FoodComparer::DAILYCHOLESTEROL) - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM) - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR) + ($potassium / FoodComparer::DAILYPOTASSIUM) + ($fiber / FoodComparer::DAILYFIBER) + ($vitamin_a / FoodComparer::DAILYVITAMINA) + ($vitamin_c / FoodComparer::DAILYVITAMINC) + ($calcium / FoodComparer::DAILYCALCIUM) + ($iron / FoodComparer::DAILYIRON);
+            $score = -($caloriesScale) * ($calories / FoodComparer::DAILYCALORIES) - ($fat / FoodComparer::DAILYFAT) - ($cholesterol / FoodComparer::DAILYCHOLESTEROL) - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM) - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR) + ($potassium / FoodComparer::DAILYPOTASSIUM) + ($fiber / FoodComparer::DAILYFIBER) + ($vitamin_a / FoodComparer::DAILYVITAMINA) + ($vitamin_c / FoodComparer::DAILYVITAMINC) + ($calcium / FoodComparer::DAILYCALCIUM) + ($iron / FoodComparer::DAILYIRON)
+			+($proteinNormalizer) * ($protein / FoodComparer::DAILYPROTEIN);
             
             $foodData['score'] = $score;
         }

@@ -64,6 +64,7 @@ class FoodFinder
                 break;
             }
         }
+
         return $foodData;
     }
     
