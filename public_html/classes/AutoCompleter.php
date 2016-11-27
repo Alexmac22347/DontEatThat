@@ -70,7 +70,7 @@ class AutoCompleter {
         $params .= "max_results=$this->numSuggestions&";
         $params .= "method=foods.autocomplete&";
         $params .= "oauth_consumer_key=$this->consumerKey&";
-        $params .= "oauth_nonce=123&";
+        $params .= "oauth_nonce=".md5(mt_rand())."&";
         $params .= "oauth_signature_method=HMAC-SHA1&";
         $params .= "oauth_timestamp=" . time() . "&";
         $params .= "oauth_version=1.0";

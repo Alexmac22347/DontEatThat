@@ -172,3 +172,4 @@ Kenton - Design Doc (1)
 
 Nov 27
 Kenton - website now checks if user has JS enabled, redirects if user disabled JS (0.5)
+Alex, Adil - finished Autocomplete testing (1.5) (a5e831517477e4b2af40cdc6e0ec29e7222a1f78)
