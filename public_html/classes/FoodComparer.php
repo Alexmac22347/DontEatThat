@@ -10,30 +10,31 @@
 
 namespace vendor\project;
 
-class FoodComparer {
-	// daily recommended intake 
-	// approximations only
-    const DAILYCALORIES    = 2300; // kcal
-    const DAILYCARBS       = 300; // g
-    const DAILYPROTEIN     = 50; // g
-    const DAILYFAT         = 65; // g
+class FoodComparer
+{
+    // daily recommended intake 
+    // approximations only
+    const DAILYCALORIES = 2300; // kcal
+    const DAILYCARBS = 300; // g
+    const DAILYPROTEIN = 50; // g
+    const DAILYFAT = 65; // g
     const DAILYCHOLESTEROL = 300; // mg
-    const DAILYSODIUM      = 2400; // mg
-    const DAILYPOTASSIUM   = 5000; // mg
-    const DAILYFIBER       = 30; // g
-    const DAILYSUGAR       = 30; // g
-    const DAILYVITAMINA        = 100; // percentage
-    const DAILYVITAMINC        = 100; // percentage
-    const DAILYCALCIUM     = 100; // percentage
-    const DAILYIRON        = 100; // percentage
-
+    const DAILYSODIUM = 2400; // mg
+    const DAILYPOTASSIUM = 5000; // mg
+    const DAILYFIBER = 30; // g
+    const DAILYSUGAR = 30; // g
+    const DAILYVITAMINA = 100; // percentage
+    const DAILYVITAMINC = 100; // percentage
+    const DAILYCALCIUM = 100; // percentage
+    const DAILYIRON = 100; // percentage
+    
     var $userCalories;
     var $userSugar;
     var $userSodium;
     var $userProtein;
     var $userCalcium;
-
-
+    
+    
     /**
      *
      * @param string $userCalories - Used to determine if the user wants more, less, or a normal amount of calories
@@ -61,15 +62,16 @@ class FoodComparer {
      *                             Any other string -> calcium is based of the amount an average person should eat in a day
      *
      */
-    function __construct( $userCalories, $userSugar, $userSodium, $userProtein, $userCalcium ) {
+    function __construct($userCalories, $userSugar, $userSodium, $userProtein, $userCalcium)
+    {
         $this->userCalories = $userCalories;
-        $this->userSugar = $userSugar;
-        $this->userSodium = $userSodium;
-        $this->userProtein = $userProtein;
-        $this->userCalcium = $userCalcium;
+        $this->userSugar    = $userSugar;
+        $this->userSodium   = $userSodium;
+        $this->userProtein  = $userProtein;
+        $this->userCalcium  = $userCalcium;
     }
-
-
+    
+    
     // This method compares multiple food items, and returns an array sorted of food items
     // sorted by healthiness.
     //
@@ -89,31 +91,32 @@ class FoodComparer {
      * @return array - The exact same array as $foodDatas, but each item has a new field called 'score'
      *                  'score' is a float. The higher the 'score', the healthier the food is.
      */
-    function getScores( $foodDatas, $useNormalizeWeights ) {
-
+    function getScores($foodDatas, $useNormalizeWeights)
+    {
+        
         assert(count($foodDatas) >= 1);
-
+        
         // Add the score field to each foodDatas element
         foreach ($foodDatas as &$foodData) {
             $foodData['score'] = 0.0;
         }
-
+        
         foreach ($foodDatas as &$foodData) {
-
+            
             $calories    = $foodData['calories']; // bad
             $carbs       = $foodData['carbohydrate']; // good
             $protein     = $foodData['protein']; // good
             $fat         = $foodData['fat']; // bad
             $cholesterol = $foodData['cholesterol']; // bad
             $sodium      = $foodData['sodium']; // bad	
-			$potassium = $foodData['potassium'];
-			$fiber = $foodData['fiber'];	
+            $potassium   = $foodData['potassium'];
+            $fiber       = $foodData['fiber'];
             $sugar       = $foodData['sugar']; // bad
-			$vitamin_a = $foodData['vitamin_a'];
-			$vitamin_c = $foodData['vitamin_c'];
+            $vitamin_a   = $foodData['vitamin_a'];
+            $vitamin_c   = $foodData['vitamin_c'];
             $calcium     = $foodData['calcium']; // good
-			$iron = $foodData['iron'];
-
+            $iron        = $foodData['iron'];
+            
             if ($useNormalizeWeights) {
                 $calories    = $this->normalizeWeight($calories, $foodData['metric_serving_amount']);
                 $carbs       = $this->normalizeWeight($carbs, $foodData['metric_serving_amount']);
@@ -121,61 +124,61 @@ class FoodComparer {
                 $fat         = $this->normalizeWeight($fat, $foodData['metric_serving_amount']);
                 $cholesterol = $this->normalizeWeight($cholesterol, $foodData['metric_serving_amount']);
                 $sodium      = $this->normalizeWeight($sodium, $foodData['metric_serving_amount']);
-                $potassium = $this->normalizeWeight($potassium, $foodData['metric_serving_amount']);
-				$fiber = $this->normalizeWeight($fiber, $foodData['metric_serving_amount']);
-				$sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_amount']);
-				$vitamin_a = $this->normalizeWeight($vitamin_a, $foodData['metric_serving_amount']);
-				$vitamin_c = $this->normalizeWeight($vitamin_c, $foodData['metric_serving_amount']);
+                $potassium   = $this->normalizeWeight($potassium, $foodData['metric_serving_amount']);
+                $fiber       = $this->normalizeWeight($fiber, $foodData['metric_serving_amount']);
+                $sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_amount']);
+                $vitamin_a   = $this->normalizeWeight($vitamin_a, $foodData['metric_serving_amount']);
+                $vitamin_c   = $this->normalizeWeight($vitamin_c, $foodData['metric_serving_amount']);
                 $calcium     = $this->normalizeWeight($calcium, $foodData['metric_serving_amount']);
-				$iron = $this->normalizeWeight($iron, $foodData['metric_serving_amount']);
+                $iron        = $this->normalizeWeight($iron, $foodData['metric_serving_amount']);
             }
-
+            
             $caloriesScale = 1;
             $sugarScale    = 1;
             $sodiumScale   = 1;
             $proteinScale  = 1;
             $calciumScale  = 1;
-
+            
             if ($this->userCalories == "High") {
                 $caloriesScale = -10;
             }
-
+            
             if ($this->userCalories == "Low") {
                 $caloriesScale = 10;
             }
-
+            
             if ($this->userSugar == "High") {
                 $sugarScale = -10;
             }
-
+            
             if ($this->userSugar == "Low") {
                 $sugarScale = 10;
             }
-
+            
             if ($this->userSodium == "High") {
                 $sodiumScale = -10;
             }
-
+            
             if ($this->userSodium == "Low") {
                 $sodiumScale = 10;
             }
-
+            
             if ($this->userProtein == "High") {
                 $proteinScale = 10;
             }
-
+            
             if ($this->userProtein == "Low") {
                 $proteinScale = -10;
             }
-
+            
             if ($this->userCalcium == "High") {
                 $calciumScale = 10;
             }
-
+            
             if ($this->userCalcium == "Low") {
                 $calciumScale = -10;
             }
-
+            
             // This really should be done to every field.
             // However, many foods have an amount of protein
             // which is a large portion of the daily intake,
@@ -186,26 +189,16 @@ class FoodComparer {
             // As the amount of protein approaches the daily amount,
             // this variable approaches 0
             $proteinNormalizer = -(1.0 / FoodComparer::DAILYPROTEIN) * ($protein) + 1.0;
-
-            $score = -($caloriesScale) * ($calories / FoodComparer::DAILYCALORIES)
-                - ($fat / FoodComparer::DAILYFAT)
-                - ($cholesterol / FoodComparer::DAILYCHOLESTEROL)
-                - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM)
-                - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR)
-				+ ($potassium / FoodComparer::DAILYPOTASSIUM)
-				+ ($fiber / FoodComparer::DAILYFIBER)
-				+ ($vitamin_a / FoodComparer::DAILYVITAMINA)
-				+ ($vitamin_c / FoodComparer::DAILYVITAMINC)
-				+ ($calcium / FoodComparer::DAILYCALCIUM)
-				+ ($iron / FoodComparer::DAILYIRON);
-
+            
+            $score = -($caloriesScale) * ($calories / FoodComparer::DAILYCALORIES) - ($fat / FoodComparer::DAILYFAT) - ($cholesterol / FoodComparer::DAILYCHOLESTEROL) - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM) - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR) + ($potassium / FoodComparer::DAILYPOTASSIUM) + ($fiber / FoodComparer::DAILYFIBER) + ($vitamin_a / FoodComparer::DAILYVITAMINA) + ($vitamin_c / FoodComparer::DAILYVITAMINC) + ($calcium / FoodComparer::DAILYCALCIUM) + ($iron / FoodComparer::DAILYIRON);
+            
             $foodData['score'] = $score;
         }
-
+        
         return $foodDatas;
     }
-
-
+    
+    
     /**
      *
      * @param float $field - The field you want to normalize. This is a number. For example, number
@@ -213,11 +206,12 @@ class FoodComparer {
      * @param float $servingSize - The serving size of the food. Eg, a banana weighs 80 grams, so you would put 80 in here.
      * @return The amount of $field per 100 grams (assuming serving size is in grams)
      */
-    function normalizeWeight($field, $servingSize) {
+    function normalizeWeight($field, $servingSize)
+    {
         return round(($field / $servingSize) * 100);
     }
-
-
+    
+    
 }
 
 

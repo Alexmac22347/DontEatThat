@@ -17,12 +17,10 @@ $resultData[1] = $foodFinder->runQuery($_GET['item2']);
 if (!isset($resultData[0]['food_id']) && !isset($resultData[1]['food_id'])) {
     $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item1'] . " or " . $_GET['item2'] . ".<br>";
     header('Location: countdown.php');
-}
-else if (!isset($resultData[0]['food_id'])) {
-    $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item1']. ".<br>";
+} else if (!isset($resultData[0]['food_id'])) {
+    $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item1'] . ".<br>";
     header('Location: countdown.php');
-}
-else if (!isset($resultData[1]['food_id'])) {
+} else if (!isset($resultData[1]['food_id'])) {
     $_SESSION['countdown_message'] = "Sorry, we could not find " . $_GET['item2'] . ".<br>";
     header('Location: countdown.php');
 }
@@ -67,12 +65,15 @@ include("layout/header.php");
 
 
 if (!isset($_SESSION['user_username'])) {
-    $foodComparer = new vendor\project\FoodComparer("Normal", "Normal","Normal","Normal","Normal");
+    $foodComparer = new vendor\project\FoodComparer("Normal", "Normal", "Normal", "Normal", "Normal");
 } else {
     $foodComparer = new vendor\project\FoodComparer($_SESSION['user_calories'], $_SESSION['user_sugar'], $_SESSION['user_sodium'], $_SESSION['user_protein'], $_SESSION['user_calcium']);
 }
 
-$scoredFoods = $foodComparer->getScores(array($resultData[0], $resultData[1]), true);
+$scoredFoods = $foodComparer->getScores(array(
+    $resultData[0],
+    $resultData[1]
+), true);
 
 // logic to determine which food to highlight
 $highlight0 = "";
@@ -84,38 +85,38 @@ if (abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < MINDIFFERENCE) {
     $highlight0 = "success";
 } else {
     $highlight1 = "success";
-} 
+}
 
-$normalizedCaloriesFood0 = $foodComparer->normalizeWeight($resultData[0]['calories'], $resultData[0]['metric_serving_amount']);
-$normalizedFatFood0 = $foodComparer->normalizeWeight($resultData[0]['fat'], $resultData[0]['metric_serving_amount']);
-$normalizedSugarFood0 = $foodComparer->normalizeWeight($resultData[0]['sugar'], $resultData[0]['metric_serving_amount']);
-$normalizedSodiumFood0 = $foodComparer->normalizeWeight($resultData[0]['sodium'], $resultData[0]['metric_serving_amount']);
-$normalizedProteinFood0 = $foodComparer->normalizeWeight($resultData[0]['protein'], $resultData[0]['metric_serving_amount']);
-$normalizedCholestrolFood0 = $foodComparer->normalizeWeight($resultData[0]['cholesterol'], $resultData[0]['metric_serving_amount']);
+$normalizedCaloriesFood0     = $foodComparer->normalizeWeight($resultData[0]['calories'], $resultData[0]['metric_serving_amount']);
+$normalizedFatFood0          = $foodComparer->normalizeWeight($resultData[0]['fat'], $resultData[0]['metric_serving_amount']);
+$normalizedSugarFood0        = $foodComparer->normalizeWeight($resultData[0]['sugar'], $resultData[0]['metric_serving_amount']);
+$normalizedSodiumFood0       = $foodComparer->normalizeWeight($resultData[0]['sodium'], $resultData[0]['metric_serving_amount']);
+$normalizedProteinFood0      = $foodComparer->normalizeWeight($resultData[0]['protein'], $resultData[0]['metric_serving_amount']);
+$normalizedCholestrolFood0   = $foodComparer->normalizeWeight($resultData[0]['cholesterol'], $resultData[0]['metric_serving_amount']);
 $normalizedCarbohydrateFood0 = $foodComparer->normalizeWeight($resultData[0]['carbohydrate'], $resultData[0]['metric_serving_amount']);
-$normalizedCalciumFood0 = $foodComparer->normalizeWeight($resultData[0]['calcium'], $resultData[0]['metric_serving_amount']);
+$normalizedCalciumFood0      = $foodComparer->normalizeWeight($resultData[0]['calcium'], $resultData[0]['metric_serving_amount']);
 
 $normalizedPotassiumFood0 = $foodComparer->normalizeWeight($resultData[0]['potassium'], $resultData[0]['metric_serving_amount']);
-$normalizedFiberFood0 = $foodComparer->normalizeWeight($resultData[0]['fiber'], $resultData[0]['metric_serving_amount']);
-$normalizedVitaminAFood0 = $foodComparer->normalizeWeight($resultData[0]['vitamin_a'], $resultData[0]['metric_serving_amount']);
-$normalizedVitaminCFood0 = $foodComparer->normalizeWeight($resultData[0]['vitamin_c'], $resultData[0]['metric_serving_amount']);
-$normalizedIronFood0 = $foodComparer->normalizeWeight($resultData[0]['iron'], $resultData[0]['metric_serving_amount']);
+$normalizedFiberFood0     = $foodComparer->normalizeWeight($resultData[0]['fiber'], $resultData[0]['metric_serving_amount']);
+$normalizedVitaminAFood0  = $foodComparer->normalizeWeight($resultData[0]['vitamin_a'], $resultData[0]['metric_serving_amount']);
+$normalizedVitaminCFood0  = $foodComparer->normalizeWeight($resultData[0]['vitamin_c'], $resultData[0]['metric_serving_amount']);
+$normalizedIronFood0      = $foodComparer->normalizeWeight($resultData[0]['iron'], $resultData[0]['metric_serving_amount']);
 
 
-$normalizedCaloriesFood1 = $foodComparer->normalizeWeight($resultData[1]['calories'], $resultData[1]['metric_serving_amount']);
-$normalizedFatFood1 = $foodComparer->normalizeWeight($resultData[1]['fat'], $resultData[1]['metric_serving_amount']);
-$normalizedSugarFood1 = $foodComparer->normalizeWeight($resultData[1]['sugar'], $resultData[1]['metric_serving_amount']);
-$normalizedSodiumFood1 = $foodComparer->normalizeWeight($resultData[1]['sodium'], $resultData[1]['metric_serving_amount']);
-$normalizedProteinFood1 = $foodComparer->normalizeWeight($resultData[1]['protein'], $resultData[1]['metric_serving_amount']);
-$normalizedCholestrolFood1 = $foodComparer->normalizeWeight($resultData[1]['cholesterol'], $resultData[1]['metric_serving_amount']);
+$normalizedCaloriesFood1     = $foodComparer->normalizeWeight($resultData[1]['calories'], $resultData[1]['metric_serving_amount']);
+$normalizedFatFood1          = $foodComparer->normalizeWeight($resultData[1]['fat'], $resultData[1]['metric_serving_amount']);
+$normalizedSugarFood1        = $foodComparer->normalizeWeight($resultData[1]['sugar'], $resultData[1]['metric_serving_amount']);
+$normalizedSodiumFood1       = $foodComparer->normalizeWeight($resultData[1]['sodium'], $resultData[1]['metric_serving_amount']);
+$normalizedProteinFood1      = $foodComparer->normalizeWeight($resultData[1]['protein'], $resultData[1]['metric_serving_amount']);
+$normalizedCholestrolFood1   = $foodComparer->normalizeWeight($resultData[1]['cholesterol'], $resultData[1]['metric_serving_amount']);
 $normalizedCarbohydrateFood1 = $foodComparer->normalizeWeight($resultData[1]['carbohydrate'], $resultData[1]['metric_serving_amount']);
-$normalizedCalciumFood1 = $foodComparer->normalizeWeight($resultData[1]['calcium'], $resultData[1]['metric_serving_amount']);
+$normalizedCalciumFood1      = $foodComparer->normalizeWeight($resultData[1]['calcium'], $resultData[1]['metric_serving_amount']);
 
 $normalizedPotassiumFood1 = $foodComparer->normalizeWeight($resultData[1]['potassium'], $resultData[1]['metric_serving_amount']);
-$normalizedFiberFood1 = $foodComparer->normalizeWeight($resultData[1]['fiber'], $resultData[1]['metric_serving_amount']);
-$normalizedVitaminAFood1 = $foodComparer->normalizeWeight($resultData[1]['vitamin_a'], $resultData[1]['metric_serving_amount']);
-$normalizedVitaminCFood1 = $foodComparer->normalizeWeight($resultData[1]['vitamin_c'], $resultData[1]['metric_serving_amount']);
-$normalizedIronFood1 = $foodComparer->normalizeWeight($resultData[1]['iron'], $resultData[1]['metric_serving_amount']);
+$normalizedFiberFood1     = $foodComparer->normalizeWeight($resultData[1]['fiber'], $resultData[1]['metric_serving_amount']);
+$normalizedVitaminAFood1  = $foodComparer->normalizeWeight($resultData[1]['vitamin_a'], $resultData[1]['metric_serving_amount']);
+$normalizedVitaminCFood1  = $foodComparer->normalizeWeight($resultData[1]['vitamin_c'], $resultData[1]['metric_serving_amount']);
+$normalizedIronFood1      = $foodComparer->normalizeWeight($resultData[1]['iron'], $resultData[1]['metric_serving_amount']);
 
 echo '
                <tbody>
@@ -169,7 +170,7 @@ echo '
 if (!isset($_SESSION['user_username'])) {
     if (abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < MINDIFFERENCE) {
         echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
-    } else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+    } else if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
         echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
         echo '<p style="text-align: center;">' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
@@ -177,7 +178,7 @@ if (!isset($_SESSION['user_username'])) {
 } else { // user logged in
     if (abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < MINDIFFERENCE) {
         echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
-    } else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+    } else if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
         echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
         echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '100 g ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
@@ -212,12 +213,15 @@ if (!isset($_SESSION['user_username'])) {
 					<?php
 
 if (!isset($_SESSION['user_username'])) {
-    $foodComparer = new vendor\project\FoodComparer("Normal", "Normal","Normal","Normal","Normal");
+    $foodComparer = new vendor\project\FoodComparer("Normal", "Normal", "Normal", "Normal", "Normal");
 } else {
     $foodComparer = new vendor\project\FoodComparer($_SESSION['user_calories'], $_SESSION['user_sugar'], $_SESSION['user_sodium'], $_SESSION['user_protein'], $_SESSION['user_calcium']);
 }
 
-$scoredFoods = $foodComparer->getScores(array($resultData[0], $resultData[1]), false);
+$scoredFoods = $foodComparer->getScores(array(
+    $resultData[0],
+    $resultData[1]
+), false);
 
 // logic to determine which food to highlight
 $highlight0 = "";
@@ -229,7 +233,7 @@ if (abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < MINDIFFERENCE) {
     $highlight0 = "success";
 } else {
     $highlight1 = "success";
-} 
+}
 
 echo '
                <tbody>
@@ -285,19 +289,18 @@ echo '
 if (!isset($_SESSION['user_username'])) {
     if (abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < MINDIFFERENCE) {
         echo '<p style="text-align: center;">' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
-    } else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+    } else if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
         echo '<p style="text-align: center;">' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
         echo '<p style="text-align: center;">' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
     }
 } else { // user logged in
     if (abs($scoredFoods[0]['score'] - $scoredFoods[1]['score']) < MINDIFFERENCE) {
-        echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
-    }
-    else if($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
-        echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' about as healthy as ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
+    } else if ($scoredFoods[0]['score'] > $scoredFoods[1]['score']) {
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . '</p>';
     } else {
-        echo '<p style="text-align: center;">'. 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
+        echo '<p style="text-align: center;">' . 'Based on your preferences, ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[1]['food_name'] . ' is healthier than ' . '<b>' . '1 serving ' . '</b>' . 'of ' . $scoredFoods[0]['food_name'] . '</p>';
     }
 }
 
