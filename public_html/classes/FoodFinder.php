@@ -106,8 +106,8 @@ class FoodFinder {
 				"potassium" => $rawFoodData["food"]["servings"]["serving"][0]["potassium"], // mg
 				"fiber" => $rawFoodData["food"]["servings"]["serving"][0]["fiber"], // mg
                 "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"], // grams
-				"vitA" => $rawFoodData["food"]["servings"]["serving"][0]["vitamin_a"], // percentage of daily recommended value
-				"vitC" => $rawFoodData["food"]["servings"]["serving"][0]["vitamin_c"], // percentage of daily recommended value
+				"vitamin_a" => $rawFoodData["food"]["servings"]["serving"][0]["vitamin_a"], // percentage of daily recommended value
+				"vitamin_c" => $rawFoodData["food"]["servings"]["serving"][0]["vitamin_c"], // percentage of daily recommended value
                 "calcium" => $rawFoodData["food"]["servings"]["serving"][0]["calcium"], // percentage of daily recommended value
 				"iron" => $rawFoodData["food"]["servings"]["serving"][0]["iron"] // percentage of daily recommended value
             );
@@ -136,8 +136,8 @@ class FoodFinder {
 				"potassium" => $rawFoodData["food"]["servings"]["serving"]["potassium"], // mg
 				"fiber" => $rawFoodData["food"]["servings"]["serving"]["fiber"], // mg
                 "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"], // grams
-				"vitA" => $rawFoodData["food"]["servings"]["serving"]["vitamin_a"], // percentage of daily recommended value
-				"vitC" => $rawFoodData["food"]["servings"]["serving"]["vitamin_c"], // percentage of daily recommended value
+				"vitamin_a" => $rawFoodData["food"]["servings"]["serving"]["vitamin_a"], // percentage of daily recommended value
+				"vitamin_c" => $rawFoodData["food"]["servings"]["serving"]["vitamin_c"], // percentage of daily recommended value
                 "calcium" => $rawFoodData["food"]["servings"]["serving"]["calcium"], // percentage of daily recommended value
 				"iron" => $rawFoodData["food"]["servings"]["serving"]["iron"] // percentage of daily recommended value
 				

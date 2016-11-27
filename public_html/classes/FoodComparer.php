@@ -23,8 +23,8 @@ class FoodComparer {
     const DAILYPOTASSIUM   = 5000; // mg
     const DAILYFIBER       = 30; // g
     const DAILYSUGAR       = 30; // g
-    const DAILYVITA        = 100; // percentage
-    const DAILYVITC        = 100; // percentage
+    const DAILYVITAMINA        = 100; // percentage
+    const DAILYVITAMINC        = 100; // percentage
     const DAILYCALCIUM     = 100; // percentage
     const DAILYIRON        = 100; // percentage
 
@@ -106,9 +106,14 @@ class FoodComparer {
             $protein     = $foodData['protein']; // good
             $fat         = $foodData['fat']; // bad
             $cholesterol = $foodData['cholesterol']; // bad
-            $sodium      = $foodData['sodium']; // bad
+            $sodium      = $foodData['sodium']; // bad	
+			$potassium = $foodData['potassium'];
+			$fiber = $foodData['fiber'];	
             $sugar       = $foodData['sugar']; // bad
+			$vitamin_a = $foodData['vitamin_a'];
+			$vitamin_c = $foodData['vitamin_c'];
             $calcium     = $foodData['calcium']; // good
+			$iron = $foodData['iron'];
 
             if ($useNormalizeWeights) {
                 $calories    = $this->normalizeWeight($calories, $foodData['metric_serving_amount']);
@@ -117,8 +122,13 @@ class FoodComparer {
                 $fat         = $this->normalizeWeight($fat, $foodData['metric_serving_amount']);
                 $cholesterol = $this->normalizeWeight($cholesterol, $foodData['metric_serving_amount']);
                 $sodium      = $this->normalizeWeight($sodium, $foodData['metric_serving_amount']);
-                $sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_amount']);
+                $potassium = $this->normalizeWeight($potassium, $foodData['metric_serving_amount']);
+				$fiber = $this->normalizeWeight($fiber, $foodData['metric_serving_amount']);
+				$sugar       = $this->normalizeWeight($sugar, $foodData['metric_serving_amount']);
+				$vitamin_a = $this->normalizeWeight($vitamin_a, $foodData['metric_serving_amount']);
+				$vitamin_c = $this->normalizeWeight($vitamin_c, $foodData['metric_serving_amount']);
                 $calcium     = $this->normalizeWeight($calcium, $foodData['metric_serving_amount']);
+				$iron = $this->normalizeWeight($iron, $foodData['metric_serving_amount']);
             }
 
             $caloriesScale = 1;
@@ -183,6 +193,12 @@ class FoodComparer {
                 - ($cholesterol / FoodComparer::DAILYCHOLESTEROL)
                 - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM)
                 - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR)
+				+ ($potassium / FoodComparer::DAILYPOTASSIUM)
+				+ ($fiber / FoodComparer::DAILYFIBER)
+				+ ($vitamin_a / FoodComparer::DAILYVITAMINA)
+				+ ($vitamin_c / FoodComparer::DAILYVITAMINC)
+				+ ($calcium / FoodComparer::DAILYCALCIUM)
+				+ ($iron / FoodComparer::DAILYIRON);
 
             $foodData['score'] = $score;
         }
