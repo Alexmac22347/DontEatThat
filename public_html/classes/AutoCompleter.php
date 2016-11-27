@@ -9,7 +9,7 @@
  */
 
 
-namespace project\vendor;
+namespace vendor\project;
 
 class AutoCompleter {
     var $consumerKey;
