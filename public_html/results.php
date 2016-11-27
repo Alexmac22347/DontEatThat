@@ -53,10 +53,7 @@ include("layout/header.php");
 						<th>Fat</th>
 						<th>Sugar</th>
 						<th>Sodium</th>
-						<th>Protein</th>
 						<th>Cholesterol</th>
-						<th>Carbohydrates</th>
-						<th>Calcium</th>
 					</tr>
 				</thead>
 				<?php
@@ -108,10 +105,7 @@ echo '
                    <td>' . round($normalizedFatFood0) . ' g</td>
                    <td>' . round($normalizedSugarFood0) . ' g</td>
                    <td>' . round($normalizedSodiumFood0) . ' mg</td>
-				   <td>' . round($normalizedProteinFood0) . ' g</td>
 				   <td>' . round($normalizedCholestrolFood0) . ' mg</td>
-				   <td>' . round($normalizedCarbohydrateFood0) . ' g</td>
-				   <td>' . round($normalizedCalciumFood0) . ' %</td>
                  </tr>
                
                  <tr class=' . $highlight1 . '>
@@ -120,10 +114,7 @@ echo '
                    <td>' . round($normalizedFatFood1) . ' g</td>
                    <td>' . round($normalizedSugarFood1) . ' g</td>
                    <td>' . round($normalizedSodiumFood1) . ' mg</td>
-				   <td>' . round($normalizedProteinFood1) . ' g</td>
 				   <td>' . round($normalizedCholestrolFood1) . ' mg</td>
-				   <td>' . round($normalizedCarbohydrateFood1) . ' g</td>
-				   <td>' . round($normalizedCalciumFood1) . ' %</td>
                  </tr>
                </tbody>
                ';
@@ -174,10 +165,7 @@ if (!isset($_SESSION['user_username'])) {
 							<th>Fat</th>
 							<th>Sugar</th>
 							<th>Sodium</th>
-							<th>Protein</th>
 							<th>Cholesterol</th>
-							<th>Carbohydrates</th>
-							<th>Calcium</th>
 						</tr>
 					</thead>
 					<?php
@@ -211,10 +199,7 @@ echo '
                    <td>' . round($resultData[0]['fat']) . ' g</td>
                    <td>' . round($resultData[0]['sugar']) . ' g</td>
                    <td>' . round($resultData[0]['sodium']) . ' mg</td>
-				   <td>' . round($resultData[0]['protein']) . ' g</td>
 				   <td>' . round($resultData[0]['cholesterol']) . ' mg</td>
-				   <td>' . round($resultData[0]['carbohydrate']) . ' g</td>
-				   <td>' . round($resultData[0]['calcium']) . ' %</td>
                  </tr>
                
                  <tr class=' . $highlight1 . '>
@@ -224,10 +209,7 @@ echo '
                    <td>' . round($resultData[1]['fat']) . ' g</td>
                    <td>' . round($resultData[1]['sugar']) . ' g</td>
                    <td>' . round($resultData[1]['sodium']) . ' mg</td>
-				   <td>' . round($resultData[1]['protein']) . ' g</td>
 				   <td>' . round($resultData[1]['cholesterol']) . ' mg</td>
-				   <td>' . round($resultData[1]['carbohydrate']) . ' g</td>
-				   <td>' . round($resultData[1]['calcium']) . ' %</td>
                  </tr>
                </tbody>
                ';

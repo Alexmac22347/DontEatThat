@@ -12,7 +12,9 @@
 namespace vendor\project;
 
 class FoodComparer {
-    const DAILYCALORIES    = 2500; // kcal
+	// daily recommended intake 
+	// approximations only
+    const DAILYCALORIES    = 2300; // kcal
     const DAILYCARBS       = 300; // g
     const DAILYPROTEIN     = 50; // g
     const DAILYFAT         = 65; // g
@@ -177,13 +179,10 @@ class FoodComparer {
             $proteinNormalizer = -(1.0 / FoodComparer::DAILYPROTEIN) * ($protein) + 1.0;
 
             $score = -($caloriesScale) * ($calories / FoodComparer::DAILYCALORIES)
-                + ($carbs / FoodComparer::DAILYCARBS)
-                + ($proteinNormalizer) * ($proteinScale) * ($protein / FoodComparer::DAILYPROTEIN)
                 - ($fat / FoodComparer::DAILYFAT)
                 - ($cholesterol / FoodComparer::DAILYCHOLESTEROL)
                 - ($sodiumScale) * ($sodium / FoodComparer::DAILYSODIUM)
                 - ($sugarScale) * ($sugar / FoodComparer::DAILYSUGAR)
-                + ($calciumScale) * ($calcium / FoodComparer::DAILYCALCIUM) ;
 
             $foodData['score'] = $score;
         }

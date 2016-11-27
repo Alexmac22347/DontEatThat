@@ -97,14 +97,19 @@ class FoodFinder {
                 "food_id" => $rawFoodData["food"]["food_id"],
                 "food_name" => $rawFoodData["food"]["food_name"],
                 "metric_serving_amount" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"][0]["metric_serving_amount"], $metric_serving_unit),
-                "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], //mg
                 "calories" => $rawFoodData["food"]["servings"]["serving"][0]["calories"], // kcal
-                "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"], // grams
+				"carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
                 "protein" => $rawFoodData["food"]["servings"]["serving"][0]["protein"], // grams
+                "fat" => $rawFoodData["food"]["servings"]["serving"][0]["fat"], // grams
+                "cholesterol" => $rawFoodData["food"]["servings"]["serving"][0]["cholesterol"], //mg
                 "sodium" => $rawFoodData["food"]["servings"]["serving"][0]["sodium"], // mg
-                "carbohydrate" => $rawFoodData["food"]["servings"]["serving"][0]["carbohydrate"], // grams
+				"potassium" => $rawFoodData["food"]["servings"]["serving"][0]["potassium"], // mg
+				"fiber" => $rawFoodData["food"]["servings"]["serving"][0]["fiber"], // mg
                 "sugar" => $rawFoodData["food"]["servings"]["serving"][0]["sugar"], // grams
-                "calcium" => $rawFoodData["food"]["servings"]["serving"][0]["calcium"] // ???
+				"vitA" => $rawFoodData["food"]["servings"]["serving"][0]["vitamin_a"], // percentage of daily recommended value
+				"vitC" => $rawFoodData["food"]["servings"]["serving"][0]["vitamin_c"], // percentage of daily recommended value
+                "calcium" => $rawFoodData["food"]["servings"]["serving"][0]["calcium"], // percentage of daily recommended value
+				"iron" => $rawFoodData["food"]["servings"]["serving"][0]["iron"] // percentage of daily recommended value
             );
         }
 
@@ -122,14 +127,20 @@ class FoodFinder {
                 "food_id" => $rawFoodData["food"]["food_id"],
                 "food_name" => $rawFoodData["food"]["food_name"],
                 "metric_serving_amount" => $this->convertToGrams($rawFoodData["food"]["servings"]["serving"]["metric_serving_amount"], $metric_serving_unit),
-                "cholesterol" => $rawFoodData["food"]["servings"]["serving"]["cholesterol"], //mg
-                "calories" => $rawFoodData["food"]["servings"]["serving"]["calories"], // kcal
-                "fat" => $rawFoodData["food"]["servings"]["serving"]["fat"], // grams
+				"calories" => $rawFoodData["food"]["servings"]["serving"]["calories"], // kcal
+				"carbohydrate" => $rawFoodData["food"]["servings"]["serving"]["carbohydrate"], // grams
                 "protein" => $rawFoodData["food"]["servings"]["serving"]["protein"], // grams
+                "fat" => $rawFoodData["food"]["servings"]["serving"]["fat"], // grams
+                "cholesterol" => $rawFoodData["food"]["servings"]["serving"]["cholesterol"], //mg
                 "sodium" => $rawFoodData["food"]["servings"]["serving"]["sodium"], // mg
-                "carbohydrate" => $rawFoodData["food"]["servings"]["serving"]["carbohydrate"], // grams
+				"potassium" => $rawFoodData["food"]["servings"]["serving"]["potassium"], // mg
+				"fiber" => $rawFoodData["food"]["servings"]["serving"]["fiber"], // mg
                 "sugar" => $rawFoodData["food"]["servings"]["serving"]["sugar"], // grams
-                "calcium" => $rawFoodData["food"]["servings"]["serving"]["calcium"] // ???
+				"vitA" => $rawFoodData["food"]["servings"]["serving"]["vitamin_a"], // percentage of daily recommended value
+				"vitC" => $rawFoodData["food"]["servings"]["serving"]["vitamin_c"], // percentage of daily recommended value
+                "calcium" => $rawFoodData["food"]["servings"]["serving"]["calcium"], // percentage of daily recommended value
+				"iron" => $rawFoodData["food"]["servings"]["serving"]["iron"] // percentage of daily recommended value
+				
             );
         }
     }
