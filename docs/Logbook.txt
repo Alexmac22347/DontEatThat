@@ -184,3 +184,4 @@ Kenton, Benny - finish up design document - (2)
 
 Nov 30
 Benny - test algorithm and find test cases that show the flexibility of the algorithm (1.5), write reflection statement (0.5) 
+Alex - wrote database tests, updated readme, fixed a bug where someone was using the config wrong (3.5) (fbac207505b46d6f3076524b65f3a404ebbe5262 to 9b94d8242c450edee6f7bb6356d5b34abb974c98)

@@ -92,17 +92,47 @@ sudo /opt/lamp/xampp start
 You're done! Check out the website by going to 'localhost' on your web browser.   
 
 
-## Running Tests
+## Running Unit Tests
 
-Tests are run using Atoum. Make sure you have composer installed (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+Unit tests are run using Atoum. Make sure you have composer installed (https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
 In the home directory, run:
 ```
 composer install
 ```
-Atoum should now be installed. To run the tests, use the following command:  
+Atoum should now be installed. To run the tests, run the following script:  
 
 ```
-php tests/*
+./scripts/runUnitTests.sh
+```
+
+## Running Database Tests
+
+These tests are a little more complicated to setup. Install mysql-server
+```
+sudo apt-get install mysql-server
+```
+you may also need to install mysql for php:
+```
+sudo apt-get install php7.0-mysql
+```
+Change the config.php file so that the database username is "root", and
+the database password is your sudo password. You could also create
+a new mysql user and use that password/username combo in the config if you want.
+Create a database called 'Group14DB', and create a table called 'Users'.
+Add the following columns to that table:
+* Name (varchar(64))  
+* Username (varchar(64))  
+* Password (varchar(256))  
+* Calories (varchar(8))  
+* Sugar (varchar(8))  
+* Sodium (varchar(8))  
+* Protein (varchar(8))  
+* Calcium (varchar(8))  
+
+Hopefully you are ready to run the database test. Use the script:
+
+```
+./scripts/runDatabaseTests.sh
 ```
 
 
