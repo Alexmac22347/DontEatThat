@@ -25,7 +25,7 @@ $sql = " DELETE FROM Users WHERE Username = '$user' ";
 if ($conn->query($sql) === TRUE) {
     session_destroy(); // "logout"
     header("Location: ../index.php");
-    exit();
+    return;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

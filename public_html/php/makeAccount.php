@@ -45,7 +45,6 @@ if (empty($signupname)) {
         $error .= "errorName=invalid";
     }
 }
-
 if (empty($signupusername)) {
     $error .= "errorUsername=empty";
 } else {
@@ -87,7 +86,7 @@ if ($error !== "") {
     $_SESSION['signupname']     = $signupname; // save name and username, so that user does not have to retype on failed signup
     $_SESSION['signupusername'] = $signupusername;
     header("Location: signup.php?" . $error);
-    exit();
+    return;
 }
 // ---------- End of Error Handling ----------
 
@@ -116,7 +115,7 @@ if ($conn->query($sql) === TRUE) {
     $_SESSION['user_calcium']  = $signupcalcium;
     session_write_close();
     header("Location: ../index.php");
-    exit();
+    return;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
