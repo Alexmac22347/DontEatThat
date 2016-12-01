@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# Run this script from DonEatThat/
-# Don't run it from the scripts/ directory
+# Run this script from the main DontEatThat directory
 
 if [ "$1" == -r ]; then
     scp -r public_html/ group14@donteatthat.ca:~/
