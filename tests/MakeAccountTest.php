@@ -63,7 +63,7 @@ if ($row['Calcium'] !== 'Normal') {
     return -1;
 }
 
-echo "makeAccount.php tests passed succesfully\n";
+echo "Successfully created account for " . $row['Username'] . "\n";
 return 0;
 
 ?>

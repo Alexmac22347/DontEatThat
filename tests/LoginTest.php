@@ -16,9 +16,21 @@ if(!isset($_SESSION['user_username'])) {
 if($_SESSION['user_username'] !== "TESTROBOT") {
     echo "Login failed. Username was: " . $_SESSION['user_name'] . "\n";
     echo "Expected: TESTROBOT\n";
+    return -1;
 }
 
-echo "checkLogin.php tests passed succesfully\n";
+echo "Successfully logged in as " . $_SESSION['user_username'] . "\n";
+
+// Test logging out
+// call the logout script
+require('logout.php');
+
+if(isset($_SESSION['user_username']) || isset($_SESSION['user_name'])) {
+    echo "logout.php failed: user is still logged in as " . $_SESSION['user_username'] . "\n";
+    return -1;
+}
+
+echo "Succesfully logged out\n";
 return 0;
 
 ?>

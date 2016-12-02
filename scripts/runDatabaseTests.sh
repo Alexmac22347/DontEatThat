@@ -7,5 +7,4 @@ cd public_html/php
 # The order of the tests matters
 php ../../tests/MakeAccountTest.php
 php ../../tests/LoginTest.php
-php ../../tests/LogoutTest.php
 php ../../tests/DeleteAccountTest.php

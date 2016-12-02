@@ -20,11 +20,11 @@ $result         = mysqli_query($conn, $sql);
 $row            = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 if (isset($row)) {
-    echo "TESTROBOT was not succesfully deleted!";
+    echo "Failed to delete account!\n";
     return -1;
 }
 
-echo "deleteAccount.php tests passed succesfully\n";
+echo "Succesfully deleted account\n";
 return 0;
 
 ?>
