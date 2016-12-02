@@ -32,7 +32,9 @@ try {
         'message' => $okMessage
     );
 
-    session_start();
+    if(session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $_SESSION['countdown_message'] = "Thank you for your email.<br>";
     header("Location: ../countdown.php");
     

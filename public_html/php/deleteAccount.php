@@ -1,6 +1,8 @@
 <?php
 // THIS SCRIPT IS CALLED WHEN A USER CONFIRMS ACCOUNT DELETION IN manageAccount.php
-session_start();
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $configs = include('../../config/config.php');
 
 // setup variables to connect to database

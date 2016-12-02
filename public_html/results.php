@@ -6,7 +6,9 @@ require_once('classes/FoodFinder.php');
 require_once('classes/FoodComparer.php');
 $config = include('../config/config.php');
 
-session_start();
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $foodFinder    = new vendor\project\FoodFinder($config['consumer_key'], $config['secret_key']);
 $resultData[0] = $foodFinder->runQuery($_GET['item1']);
