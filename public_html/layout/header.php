@@ -32,7 +32,7 @@ if(session_status() == PHP_SESSION_NONE) {
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!-- Script needed to dynamically load HTML pages -->
-        <script src="http://www.w3schools.com/lib/w3data.js"></script>
+        <script src="js/w3data.js"></script>
     </head>
     <body>
         <!-- Navbar setup -->

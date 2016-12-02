@@ -188,3 +188,4 @@ Alex - wrote database tests, updated readme, fixed a bug where someone was using
 
 Dec 1
 Alex - Fixed some hacky code (multiple session_starts()), fixed up the database tests. (1.5)
+Alex - Displaying tabs. Also refactored code at the same time (4) (9a41f0dbe080fa9564ce8eb517617059e086fae8 and a9427adb4d6730c1d1b93367e550ee3b6fd44aa7)
