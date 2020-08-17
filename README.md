@@ -158,7 +158,7 @@ The php files inside public_html are actual webpages, which contain HTML and can
 
 
 ## Authors
-Benny Lo - https://github.com/blo2569  
+Benny Lo - https://github.com/bennylojf  
 Charn Rai - https://github.com/charnrai  
 Alex Macdonald - https://github.com/Alexmac22347  
 Adil Kydyrbayev - https://github.com/Adil9551  
